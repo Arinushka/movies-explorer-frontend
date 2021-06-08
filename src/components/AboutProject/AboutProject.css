@@ -1,0 +1,60 @@
+.about-project{
+  width: 1280px;
+	margin-top: 12px;
+	color:#fff;
+}
+
+.about-project__wrapper{
+	margin: 70px 70px 110px 70px;
+	display: grid;
+	grid-template-columns: 550px 550px;
+	grid-row-gap: 40px;
+	grid-column-gap: 26px;
+}
+
+.about-project__title{
+	margin:0;
+	font-weight: normal;
+	font-size: 20px;
+	line-height: 24px;
+}
+
+.about-project__subtitle{
+	margin:0;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.deadlines{
+	margin: 0 70px 122px 70px;
+	display: grid;
+	grid-template-columns: 228px 912px;
+	grid-row-gap: 14px;
+}
+
+.deadlines__time{
+	font-weight: normal;
+	min-height: 36px;
+	font-size: 14px;
+	line-height: 17px;
+	background-color: #303030;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.deadlines__time_other_theme{
+	background-color: #3DDC84;
+}
+
+.deadlines__topic{
+	margin: 0;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 17px;
+	color:#8B8B8B;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

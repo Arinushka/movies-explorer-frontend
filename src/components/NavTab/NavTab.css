@@ -1,0 +1,18 @@
+
+.navtab__element{
+    width: 96px;
+    height: 36px;
+    background-color: #303030;
+   	padding: 0;
+  	border-radius: 10px;
+  	cursor: pointer;
+   	border: none;
+   	outline: none;
+		color:#fff;
+		margin-right: 10px;
+		margin-bottom: 40px;
+}
+
+.navtab__element:last-child{
+	margin-right: 0;
+}
