@@ -3,8 +3,9 @@
   color: #fff;
 	border-bottom: 1px solid #DADADA;
 	padding-bottom: 23px;  
-	margin: 98px auto 0 auto;
+	margin: 0 auto 0 auto;
 	font-weight: normal;
 	font-size: 22px;
-	line-height: 27px
+	line-height: 27px;
+	letter-spacing: -0.04em;
 }

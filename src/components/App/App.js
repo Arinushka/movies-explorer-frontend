@@ -2,6 +2,9 @@ import { Header } from "../Header/Header";
 import { Promo } from "../Promo/Promo";
 import { AboutProject } from "../AboutProject/AboutProject";
 import { Tech } from "../Tech/Tech";
+import { AboutMe } from "../AboutMe/AboutMe";
+import { Portfolio } from "../Portfolio/Portfolio";
+import { Footer } from "../Footer/Footer";
 import "./App.css";
 
 export const App = () => {
@@ -10,7 +13,10 @@ export const App = () => {
       <Header/>
       <Promo/>
       <AboutProject/>
-      <Tech></Tech>
+      <Tech/>
+      <AboutMe/>
+      <Portfolio/>
+      <Footer/>
     </div>
   );
 }

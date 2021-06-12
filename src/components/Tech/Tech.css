@@ -1,7 +1,9 @@
 .tech{
   width: 1280px;
   color:#fff;
-	background-color: #272727;   
+	background-color: #272727;
+	letter-spacing: -0.04em;
+	padding-top: 100px;
 }
 
 .tech__title{
@@ -21,9 +23,12 @@
 	margin: 0 auto 100px auto;
 	text-align: center;
 }
+
 .tech__list{
 	display: flex;
 	justify-content: center;
+	padding: 0;
+	margin: 0;
 }
 
 .tech__cell{

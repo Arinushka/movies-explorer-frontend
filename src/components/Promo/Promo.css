@@ -9,11 +9,12 @@
 }
 
 .promo__title{
-    max-width: 730px;
-    color: #fff;
-    text-align: center;
-		font-weight: normal;
-		font-size: 50px;
-		line-height: 58px;
-		margin: 160px auto 151px auto;
+  max-width: 730px;
+  color: #fff;
+  text-align: center;
+	font-weight: normal;
+	font-size: 50px;
+	line-height: 58px;
+	margin: 160px auto 151px auto;
+	letter-spacing: -0.04em;
 }
