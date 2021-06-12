@@ -1,23 +1,16 @@
 import { Header } from "../Header/Header";
-import { Promo } from "../Promo/Promo";
-import { AboutProject } from "../AboutProject/AboutProject";
-import { Tech } from "../Tech/Tech";
-import { AboutMe } from "../AboutMe/AboutMe";
-import { Portfolio } from "../Portfolio/Portfolio";
 import { Footer } from "../Footer/Footer";
 import "./App.css";
+import { Main } from "../Main/Main";
+import { Movies } from "../Movies/Movies";
 
 export const App = () => {
   return (
     <div className="app">
-      <Header/>
-      <Promo/>
-      <AboutProject/>
-      <Tech/>
-      <AboutMe/>
-      <Portfolio/>
-      <Footer/>
+      <Header />
+      {/* <Main /> */}
+      <Movies/>
+      <Footer />
     </div>
   );
 }
-
