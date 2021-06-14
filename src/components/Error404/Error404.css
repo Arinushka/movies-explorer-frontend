@@ -1,0 +1,30 @@
+.error{
+  width: 1280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+	color: #fff;
+}
+
+.error__title{
+  font-weight: normal;
+	font-size: 140px;
+	line-height: 169px;
+	margin: 246px 0 0 0;
+}
+
+.error__subtitle{
+	margin: 5px 0 184px 0;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+.error__link{
+	color: #4285F4;
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 17px;
+	margin-bottom: 60px;
+}

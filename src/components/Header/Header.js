@@ -4,7 +4,7 @@ import './Header.css';
 export const Header = () => {
   return (
     <header className="header">
-      <div className="header__logo"/>
+      <div className="logo"/>
       <div className="header__wrapper">
          <button className="header__link">Регистрация</button>
 				 <button className="header__link">Войти</button>
