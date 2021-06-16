@@ -4,9 +4,9 @@ import './NavTab.css';
 export const NavTab = () => {
 	return (
 		<nav className="navtab">
-			<button className="navtab__element">О проекте</button>
-			<button className="navtab__element">Технологии</button>
-			<button className="navtab__element">Студент</button>
+			<a href="#about-project" className="navtab__element">О проекте</a>
+			<a href="#tech" className="navtab__element">Технологии</a>
+			<a href="#about-me" className="navtab__element">Студент</a>
 		</nav>
 	);
 }

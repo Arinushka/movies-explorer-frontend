@@ -1,17 +1,30 @@
-
-.navtab__element{
-    width: 96px;
-    height: 36px;
-    background-color: #303030;
-   	padding: 0;
-  	border-radius: 10px;
-  	cursor: pointer;
-   	border: none;
-   	outline: none;
-		color:#fff;
-		margin-right: 10px;
-		margin-bottom: 40px;
+.navtab{
+	display: flex;
 }
+.navtab__element{
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 96px;
+  height: 36px;
+  background-color: #303030;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+	color:#fff;
+	margin-right: 10px;
+	margin-bottom: 40px;
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.navtab__element {
+		margin-bottom: 30px;
+	}
+  }
 
 .navtab__element:last-child{
 	margin-right: 0;

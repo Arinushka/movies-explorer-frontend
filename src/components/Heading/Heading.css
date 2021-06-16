@@ -9,3 +9,17 @@
 	line-height: 27px;
 	letter-spacing: -0.04em;
 }
+
+@media screen and (max-width: 1024px) {
+	/* стили для планшета в альбомной ориентации */
+	.heading {
+	  max-width: 900px;
+	}
+  }
+  
+  @media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.heading{
+		max-width: 668px;
+	}
+  }

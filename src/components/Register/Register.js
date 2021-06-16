@@ -2,9 +2,15 @@ import React from 'react';
 import { Form } from '../Form/Form';
 import { Input } from '../Input/Input';
 
-export const Register = () => {
+export const Register = (props) => {
 	return (
-		<Form title="Добро пожаловать!">
+		<Form
+			title="Добро пожаловать!"
+			typeLink="Войти"
+			to="/signin"
+			typeButton="Зарегистрироваться"
+			check="Уже зарегистрированы?"
+			onIsHidden={props.onIsHidden}>
 			<div className="form__wrapper">
 				<Input
 					className="form__input"

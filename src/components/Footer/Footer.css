@@ -1,8 +1,23 @@
 .footer{
-  width: 1140px;
+  max-width: 1140px;
   display: flex;
   flex-direction: column;
+	margin: 0 auto;
 }
+
+@media screen and (max-width: 1024px) {
+	/* стили для планшета */
+	.footer{
+	max-width: 1024px;
+	}
+  }
+
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.footer{
+	max-width: 708px;
+	}
+  }
 
 .footer__title{
 	font-weight: normal;
@@ -16,6 +31,13 @@
 	text-align: center;
 }
 
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.footer__title{
+		max-width: 708px;
+	}
+  }
+
 .footer__wrapper{
 	display: flex;
 	justify-content: space-between;
@@ -25,6 +47,9 @@
 .footer__author{
 	color:#fff;
 	margin:0;
+	font-weight: normal;
+	font-size: 13px;
+	line-height: 16px;
 
 }
 
@@ -39,6 +64,9 @@
 
 .footer__wrapper-link{
 	margin-right: 20px;
+	font-weight: normal;
+	font-size: 13px;
+	line-height: 16px;
 }
 
 .footer__wrapper-link:last-child{

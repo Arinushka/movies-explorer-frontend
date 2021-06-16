@@ -5,7 +5,7 @@ import './Profile.css';
 export const Profile = () => {
 	return (
 		<div className="profile">
-			<h1 className="profile__title">Привет, Арина!</h1>
+			<h1 className="profile__title">Привет, Виталий!</h1>
 			<form className="profile__form">
 				<div className="profile__wrapper">
 					<Input

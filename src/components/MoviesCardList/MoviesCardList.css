@@ -23,6 +23,7 @@ align-items: center;
   background: #2F2F2F;
   border-radius: 6px;
   color: #fff;
+  cursor: pointer;
   outline: none;
   border: none;
   font-weight: 500;

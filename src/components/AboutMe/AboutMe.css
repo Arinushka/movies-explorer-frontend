@@ -1,8 +1,23 @@
 .about-me{
-  width: 1280px;
+  max-width: 1280px;
   color:#fff;
-	padding-top: 119px;
+  padding-top: 119px;
 }
+
+@media screen and (max-width: 1024px) {
+	/* стили для планшета */
+	.about-me{
+		max-width: 1024px;
+	}
+  }
+
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.about-me{
+		max-width: 768px;
+		padding-top: 90px;
+	}
+  }
 
 .about-me__wrapper{
   display: grid;
@@ -10,9 +25,19 @@
 	grid-template-rows: 1fr 1fr;
 	grid-column-gap: 270px;
 	margin: 66px auto 101px auto;
-	width: 1140px;
+	max-width: 1140px;
 	
 }
+
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.about-me__wrapper{
+		grid-template-columns: 364px 255px;
+		grid-column-gap: 49px;
+		max-width: 668px;
+		margin-bottom: 67px;
+	}
+  }
 
 .about-me__title{
 	grid-column: 1/2;
@@ -23,6 +48,14 @@
 	letter-spacing: -0.04em;
 }
 
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.about-me__title{
+		font-size: 40px;
+    line-height: 42px;
+	}
+  }
+
 .about-me__subtitle{
 	grid-column: 1/2;
 	font-weight: 500;
@@ -31,14 +64,32 @@
 	margin: 18px 0 20px 0;
 }
 
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.about-me__subtitle{
+		font-size: 12px;
+    line-height: 18px;
+		margin: 10px 0 20px 0;
+	}
+  }
+
 .about-me__text{
 	grid-column: 1/2;
 	grid-row: 3/3;
 	font-weight: normal;
 	font-size: 14px;
 	line-height: 22px;
-	margin:0 20px 130px 0;
+	margin:0 0 130px 0;
+	text-align: left;
 }
+
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.about-me__text{
+		font-size: 12px;
+    line-height: 18px;
+	}
+  }
 
 .about-me__links{
 	display: flex;
@@ -47,6 +98,14 @@
 	grid-row: 3/3;
 	align-items: flex-end;
 }
+
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.about-me__links{
+	margin-bottom: 24px;
+	}
+  }
+
 .about-me__link{
 	margin-right: 20px;
 	text-decoration: none;
@@ -56,6 +115,13 @@
 	line-height: 17px;
 }
 
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.about-me__link{
+		margin-right: 18px;
+	}
+  }
+
 .about-me__link:last-child{
 	margin-right: 0;
 }
@@ -63,4 +129,14 @@
 .about-me__photo{
 	grid-column: 2/2;
 	grid-row: 1/4;
+	width:270px ;
+	height: 327px;
 }
+
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.about-me__photo{
+		width:255px ;
+	height: 307px;
+	}
+  }

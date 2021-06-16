@@ -31,27 +31,27 @@ export const MoviesCardList = () => {
 				title="В погоне за Бенкси"
 				time="1ч 42м"/>
 				<MoviesCard
-				img={img7}
+				img={img4}
 				title="Баския: Взрыв реальности"
 				time="1ч 21м"/>
 				<MoviesCard
-				img={img8}
+				img={img5}
 				title="Бег это свобода"
 				time="1ч 44м"/>
 				<MoviesCard
-				img={img9}
+				img={img6}
 				title="Книготорговцы"
 				time="1ч 37м"/>
 				<MoviesCard
-				img={img4}
+				img={img7}
 				title="Когда я думаю о Германии ночью"
 				time="1ч 56м"/>
 				<MoviesCard
-				img={img5}
+				img={img8}
 				title="Gimme Danger: История Игги и The Stooge"
 				time="1ч 59м"/>
 				<MoviesCard
-				img={img6}
+				img={img9}
 				title="Дженис: Маленькая девочка грустит"
 				time="1ч 42м"/>
 				<MoviesCard

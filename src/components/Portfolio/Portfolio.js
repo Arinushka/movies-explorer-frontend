@@ -10,15 +10,15 @@ export const Portfolio = () => {
 				<ul className="portfolio__group">
 					<li className="portfolio__item">
 						<p className="portfolio__heading">Статичный сайт</p>
-						<a className="portfolio__link" href="#"><img className="portfolio__image" src={image} alt="Ссылка"/></a>
+						<a className="portfolio__link" target="_blank" href="https://arinushka.github.io/how-to-learn/"><img className="portfolio__image" src={image} alt="Ссылка"/></a>
 					</li>
 					<li className="portfolio__item">
 						<p className="portfolio__heading">Адаптивный сайт</p>
-						<a className="portfolio__link" href="#"><img className="portfolio__image" src={image} alt="Ссылка"/></a>
+						<a className="portfolio__link" target="_blank" href="https://arinushka.github.io/russian-travel/"><img className="portfolio__image" src={image} alt="Ссылка"/></a>
 					</li>
 					<li className="portfolio__item">
 						<p className="portfolio__heading">Одностраничное приложение</p>
-						<a className="portfolio__link" href="#"><img className="portfolio__image" src={image} alt="Ссылка"/></a>
+						<a className="portfolio__link" target="_blank" href="https://hakuna.matata.nomoredomains.club"><img className="portfolio__image" src={image} alt="Ссылка"/></a>
 					</li>
 				</ul>
 			</nav>

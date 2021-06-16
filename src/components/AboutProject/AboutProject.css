@@ -1,8 +1,23 @@
 .about-project{
-  width: 1280px;
+  max-width: 1280px;
 	margin-top: 100px;
 	color:#fff;
 }
+
+@media screen and (max-width: 1024px) {
+	/* стили для планшета в альбомной ориентации */
+	.about-project {
+	  max-width: 1024px;
+	}
+  }
+  
+  @media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.about-project{
+		max-width: 768px;
+		margin-top: 90px;
+	}
+  }
 
 .about-project__wrapper{
 	margin: 70px 70px 110px 70px;
@@ -11,6 +26,23 @@
 	grid-row-gap: 26px;
 	grid-column-gap: 40px;
 }
+
+@media screen and (max-width: 1024px) {
+	/* стили для планшета */
+	.about-project__wrapper{
+		grid-template-columns: 425px 425px;
+		grid-column-gap: 30px;
+		grid-row-gap: 22px;
+	}
+  }
+
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.about-project__wrapper{
+		grid-template-columns: 319px 319px;
+		margin: 70px 50px 94px 50px;
+	}
+  }
 
 .about-project__title{
 	margin:0;
@@ -27,12 +59,35 @@
 	line-height: 20px;
 }
 
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.about-project__subtitle{
+		font-size: 12px;
+		line-height: 18px;
+	}
+  }
+
 .deadlines{
 	margin: 0 70px 110px 70px;
 	display: grid;
 	grid-template-columns: 228px 912px;
 	grid-row-gap: 14px;
 }
+
+@media screen and (max-width: 1024px) {
+	/* стили для планшета */
+	.deadlines{
+		grid-template-columns: 180px 700px;
+	}
+  }
+
+@media screen and (max-width: 768px) {
+	/* стили для планшета */
+	.deadlines{
+		grid-template-columns: 140px 528px;
+		margin: 0 50px 92px 50px;
+	}
+  }
 
 .deadlines__time{
 	font-weight: normal;
@@ -47,6 +102,7 @@
 
 .deadlines__time_other_theme{
 	background-color: #3DDC84;
+	color:#000000;
 }
 
 .deadlines__topic{

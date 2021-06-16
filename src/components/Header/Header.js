@@ -1,13 +1,14 @@
 import React from 'react';
+import { Navigation } from '../Navigation/Navigation';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
-export const Header = () => {
+export const Header = (props) => {
   return (
     <header className="header">
-      <div className="logo"/>
+      <Link to="/" className="logo"></Link>
       <div className="header__wrapper">
-         <button className="header__link">Регистрация</button>
-				 <button className="header__link">Войти</button>
+        <Navigation isAuth={props.isAuth} />
       </div>
     </header>
   );

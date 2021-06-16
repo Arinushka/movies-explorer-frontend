@@ -42,4 +42,11 @@
 	background-repeat: no-repeat;
 	background-color: transparent;
 	border: none;
+	cursor: pointer;
+}
+
+.movies-card__button_delete_card{
+	background-image: url(../../images/button__delete.svg);
+	
+	align-self: center;
 }

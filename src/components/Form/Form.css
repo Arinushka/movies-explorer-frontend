@@ -1,5 +1,5 @@
 .form{
-	
+	margin-top: 70px;
 	display: flex;
 	flex-direction: column;
   align-items: flex-start;
@@ -51,9 +51,13 @@
 	padding: 0 0 10px 0;
 }
 
-.form__wrapper_for_login{
-	margin-bottom: 179px;
+.form__wrapper:nth-child(3){
+	margin-bottom: 167px;
 }
+.form__wrapper_for_login{
+	margin-bottom: 221px;
+}
+
 
 .form__button{
 	background-color: #4285F4;
@@ -66,7 +70,8 @@
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 17px;
-
+	padding: 0;
+	cursor: pointer;
 }
 
 .form__check{
