@@ -19,10 +19,15 @@
 }
 
 @media screen and (max-width: 768px) {
-  /* стили для планшета */
   .navigation__link {
 		font-size: 12px;
-		
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .navigation__link {
+		font-size: 10px;
+		margin-right: 14px;
   }
 }
 
@@ -43,6 +48,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+
+@media screen and (max-width: 450px) {
+  .navigation__link_type_button{
+		width: 54px;
+	  height: 26px;
+  }
 }
 
 .navigation__wrapper{

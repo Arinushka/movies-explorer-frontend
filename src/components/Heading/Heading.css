@@ -16,8 +16,11 @@
 		margin: 0 auto;
 	}
 }
-@media screen and (max-width: 767px) and (min-width: 320px) {
+@media screen and (max-width: 767px) and (min-width: 300px) {
 	.heading {
 		max-width: 1040px;
+		font-size: 18px;
+    line-height: 22px;
+		padding-bottom: 28px; 
 	}
 }

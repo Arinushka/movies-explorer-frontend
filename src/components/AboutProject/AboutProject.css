@@ -14,9 +14,11 @@
 	}
 }
   
-  @media screen and (max-width: 767px) and (min-width: 320px) {
+  @media screen and (max-width: 767px) and (min-width: 300px) {
 	.about-project{
-		max-width: 768px;
+		width: calc(100% - 32px);
+		margin-top: 70px;
+		padding: 0;
 	}
 }
 
@@ -38,12 +40,11 @@
 		margin-bottom: 93px;
 	}
 }
-@media screen and (max-width: 767px) and (min-width: 320px) {
+@media screen and (max-width: 767px) and (min-width: 300px) {
 	.about-project__wrapper{
-		grid-template-columns: 370px 370px;
-		grid-column-gap: 30px;
-		grid-row-gap: 22px;
-
+		grid-template-columns: 1fr;
+		grid-row-gap: 0;
+    margin: 60px auto 60px auto;
 	}
 }
 
@@ -53,12 +54,21 @@
 	font-size: 20px;
 	line-height: 24px;
 	letter-spacing: -0.04em;
+	margin-bottom: 16px;
+}
+
+@media screen and (max-width: 767px) and (min-width: 300px) {
+	.about-project__title{
+		font-size: 18px;
+    line-height: 22px;
+	}
 }
 
 
-@media screen and (max-width: 767px) and (min-width: 320px) {
+@media screen and (max-width: 767px) and (min-width: 300px) {
 	.about-project__title:last-of-type{
 		grid-row: 3/4;
+		margin-top: 56px;
 	}
 }
 
@@ -76,7 +86,14 @@
 	}
 }
 
-@media screen and (max-width: 767px) and (min-width: 320px) {
+@media screen and (max-width: 767px) {
+	.about-project__subtitle{
+		font-size: 11px;
+		line-height: 16px;
+	}
+}
+
+@media screen and (max-width: 767px) and (min-width: 300px) {
 	.about-project__subtitle:last-of-type{
 		grid-row: 4/4;
 	}
@@ -98,9 +115,11 @@
 	}
 }
 
-@media screen and (max-width: 767px) and (min-width: 320px){
+@media screen and (max-width: 767px) and (min-width: 300px){
 	.deadlines{
-		margin: 0 50px 92px 50px;
+		grid-template-columns: 0.86fr 1.6fr;
+		margin: 0 0 92px 0;
+		grid-row-gap: 10px;
 	}
 }
 
@@ -114,6 +133,15 @@
 	justify-content: center;
 	align-items: center;
 }
+
+
+@media screen and (max-width: 450px){
+	.deadlines__time{
+		font-size: 11px;
+line-height: 13px;
+	}
+}
+
 
 .deadlines__time_other_theme{
 	background-color: #3DDC84;
@@ -129,4 +157,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+@media screen and (max-width: 450px) {
+	.deadlines__topic{
+		font-size: 11px;
+		line-height: 13px;
+	}
 }

@@ -13,9 +13,11 @@
 	}
 }
 
-@media screen and (max-width: 767px) and (min-width: 320px) {
+@media screen and (max-width: 767px) and (min-width: 300px) {
 		.about-me{
-			max-width: 870px;
+		padding-left: 3.8%;
+		padding-right: 3.8%;
+		padding-top: 70px;
 		}
 }
 
@@ -37,12 +39,20 @@
 	}
 }
 
-@media screen and (max-width: 767px) and (min-width: 320px) {
+@media screen and (max-width: 767px) and (min-width: 300px) {
 	.about-me__wrapper{
-		grid-template-columns: 364px 255px;
+		grid-template-rows: 0.5fr;
+		grid-template-columns: 0.5fr;
 		grid-column-gap: 49px;
-		max-width: 668px;
+		grid-template-areas: 
+		"a"
+		"b"
+		"c"
+		"d"
+		"e";
 		margin-bottom: 67px;
+		margin-top: 60px;
+		justify-content: center;
 	}
 }
 
@@ -62,6 +72,16 @@
 	}
 }
 
+@media screen and (max-width: 500px) {
+	.about-me__title{
+		grid-row: 3/6;
+		grid-area: b;
+		margin-bottom: 10px;
+		font-size: 30px;
+    line-height: 36px;
+	}
+}
+
 .about-me__subtitle{
 	grid-column: 1/2;
 	font-weight: 500;
@@ -75,6 +95,14 @@
 		font-size: 12px;
     line-height: 18px;
 		margin: 10px 0 20px 0;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.about-me__subtitle{
+		margin-bottom: 20px;
+		font-size: 11px;
+    line-height: 16px;
 	}
 }
 
@@ -95,6 +123,15 @@
 	}
 }
 
+@media screen and (max-width: 500px) {
+	.about-me__text{
+		font-size: 11px;
+    line-height: 16px;
+	  grid-row: 5/6;
+		margin-bottom: 19px;
+	}
+}
+
 .about-me__links{
 	display: flex;
 	margin: 20px 0 0 0;
@@ -106,6 +143,12 @@
 @media screen and (max-width: 768px) {
 	.about-me__links{
 	margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.about-me__links{
+		grid-row: 6/6;
 	}
 }
 
@@ -124,6 +167,12 @@
 	}
 }
 
+@media screen and (max-width: 450px) {
+	.about-me__link{
+		margin-right: 25px;
+	}
+}
+
 .about-me__link:last-child{
 	margin-right: 0;
 }
@@ -138,13 +187,19 @@
 @media screen and (max-width: 768px) {
 	.about-me__photo{
 		width:255px ;
-	height: 307px;
+	  height: 307px;
 	}
 }
 
-@media screen and (max-width: 668px) {
+@media screen and (max-width: 500px) {
 		.about-me__photo{
-			width:185px ;
-		  height: 237px;
+			width:292px ;
+		  height: 352px;
+			grid-row: 1/6;
+			grid-column: 1/1;
+			grid-area: a;
+			align-self: center;
+		justify-self: center;
+		margin-bottom: 40px;
 		}
-	}
+}

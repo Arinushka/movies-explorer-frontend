@@ -13,9 +13,9 @@
 	}
 }
   
-@media screen and (max-width: 767px) and (min-width: 320px) {
+@media screen and (max-width: 767px) and (min-width: 300px) {
 	.promo {
-		max-width: 728px;
+		width: calc(100% - 28px)
 	}
 }
 
@@ -39,11 +39,10 @@
 	}
 }
 
-@media screen and (max-width: 767px) and (min-width: 320px) {
+@media screen and (max-width: 767px) and (min-width: 300px) {
 	.promo__title {
-		margin: 270px auto 260px auto;
-		font-size: 35px;
-		line-height: 45px;
-		max-width: 480px;
+		margin: 215px auto 212px auto;
+		font-size: 29px;
+    line-height: 37px;
 	}
 }
