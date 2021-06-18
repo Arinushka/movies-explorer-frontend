@@ -2,11 +2,8 @@
 @import './vendor/normalize.css';
 @import './vendor/fonts/Inter Web/inter.css';
 .page{
-    background-color: #202020;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    
+  
     background-color: #202020;
     font-family: 'Inter', Arial, sans-serif, Helvetica;
 }

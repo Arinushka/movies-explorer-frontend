@@ -6,8 +6,8 @@ export const Portfolio = () => {
 	return (
 		<section className="portfolio">
 			<h2 className="portfolio__title">Портфолио</h2>
-			<nav>
-				<ul className="portfolio__group">
+			<nav className="portfolio__group">
+				<ul className="portfolio__list">
 					<li className="portfolio__item">
 						<p className="portfolio__heading">Статичный сайт</p>
 						<a className="portfolio__link" target="_blank" href="https://arinushka.github.io/how-to-learn/"><img className="portfolio__image" src={image} alt="Ссылка"/></a>

@@ -2,47 +2,50 @@
   max-width: 1280px;
 	margin-top: 100px;
 	color:#fff;
+	margin: 110px auto 0 auto;
+	padding-right: 2%;
 }
 
-@media screen and (max-width: 1024px) {
-	/* стили для планшета в альбомной ориентации */
+@media screen and (max-width: 1279px) and (min-width: 768px) {
 	.about-project {
-	  max-width: 1024px;
+		width: calc(100% - 100px);
+		margin-top: 90px;
+		padding: 0;
 	}
-  }
+}
   
-  @media screen and (max-width: 768px) {
-	/* стили для планшета */
+  @media screen and (max-width: 767px) and (min-width: 320px) {
 	.about-project{
 		max-width: 768px;
-		margin-top: 90px;
 	}
-  }
+}
 
 .about-project__wrapper{
-	margin: 70px 70px 110px 70px;
+	margin: 70px auto 110px auto;
 	display: grid;
 	grid-template-columns: 550px 550px;
 	grid-row-gap: 26px;
 	grid-column-gap: 40px;
+	max-width: 1140px;
 }
 
-@media screen and (max-width: 1024px) {
-	/* стили для планшета */
+@media screen and (max-width: 1279px) and (min-width: 768px) {
 	.about-project__wrapper{
-		grid-template-columns: 425px 425px;
+		grid-template-columns: 1fr 1fr;
 		grid-column-gap: 30px;
 		grid-row-gap: 22px;
+    width: 100%;
+		margin-bottom: 93px;
 	}
-  }
-
-@media screen and (max-width: 768px) {
-	/* стили для планшета */
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
 	.about-project__wrapper{
-		grid-template-columns: 319px 319px;
-		margin: 70px 50px 94px 50px;
+		grid-template-columns: 370px 370px;
+		grid-column-gap: 30px;
+		grid-row-gap: 22px;
+
 	}
-  }
+}
 
 .about-project__title{
 	margin:0;
@@ -50,6 +53,13 @@
 	font-size: 20px;
 	line-height: 24px;
 	letter-spacing: -0.04em;
+}
+
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+	.about-project__title:last-of-type{
+		grid-row: 3/4;
+	}
 }
 
 .about-project__subtitle{
@@ -60,12 +70,17 @@
 }
 
 @media screen and (max-width: 768px) {
-	/* стили для планшета */
 	.about-project__subtitle{
 		font-size: 12px;
 		line-height: 18px;
 	}
-  }
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+	.about-project__subtitle:last-of-type{
+		grid-row: 4/4;
+	}
+}
 
 .deadlines{
 	margin: 0 70px 110px 70px;
@@ -74,20 +89,20 @@
 	grid-row-gap: 14px;
 }
 
-@media screen and (max-width: 1024px) {
-	/* стили для планшета */
+@media screen and (max-width: 1279px) and (min-width: 768px) {
 	.deadlines{
-		grid-template-columns: 180px 700px;
+		grid-template-columns: 1fr 3.8fr;
+		margin: 0 0 110px 0;
+		width: 100%;
+		margin-bottom: 90px;
 	}
-  }
+}
 
-@media screen and (max-width: 768px) {
-	/* стили для планшета */
+@media screen and (max-width: 767px) and (min-width: 320px){
 	.deadlines{
-		grid-template-columns: 140px 528px;
 		margin: 0 50px 92px 50px;
 	}
-  }
+}
 
 .deadlines__time{
 	font-weight: normal;

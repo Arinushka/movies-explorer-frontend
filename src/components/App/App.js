@@ -9,6 +9,7 @@ import { Login } from "../Login/Login";
 import { Error404 } from "../Error404/Error404";
 import React from "react";
 import { Route, Switch } from 'react-router-dom';
+import './App.css';
 
 export const App = () => {
 
