@@ -11,7 +11,7 @@ export const Navigation = (props) => {
 				<Link to="/saved-movies" className="navigation__link navigation__link_active">Сохранённые фильмы</Link>
 			</div>
 			<div className="navigation__wrapper">
-			<Link to="/profile" className="navigation__link">Аккаунт</Link>
+			<Link to="/profile" className="navigation__link navigation__link_with_signin">Аккаунт</Link>
 			<div className="navigation__img"></div>
 			</div>
 		</nav>}
