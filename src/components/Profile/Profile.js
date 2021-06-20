@@ -2,7 +2,15 @@ import React from 'react';
 import { Input } from '../Input/Input';
 import './Profile.css';
 
-export const Profile = () => {
+export const Profile = (props) => {
+
+	React.useEffect(() => {
+		props.onIsHiddenFooter(false)
+		return () => {
+			props.onIsHiddenFooter(true)
+		}
+	}, [])
+
 	return (
 		<div className="profile">
 			<h1 className="profile__title">Привет, Виталий!</h1>

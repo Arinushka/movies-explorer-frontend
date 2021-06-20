@@ -16,6 +16,7 @@ export const App = () => {
   const [isAuth, setIsAuth] = React.useState(true);
   const [isSavedMovies, setIsSavedMovies] = React.useState(true);
   const [isHidden, setIsHidden] = React.useState(true);
+  const [isHiddenFooter, setIsHiddenFooter] = React.useState(true);
 
   function handleLink(boolean) {
     setIsAuth(boolean);
@@ -36,7 +37,7 @@ export const App = () => {
           <SavedMovies isSavedMovies={isSavedMovies}/>
         </Route>
         <Route path="/profile">
-          <Profile />
+          <Profile onIsHiddenFooter={setIsHiddenFooter}/>
         </Route>
         <Route path="/signup">
           <Register onIsHidden={setIsHidden} />
@@ -44,11 +45,11 @@ export const App = () => {
         <Route path="/signin">
           <Login onIsHidden={setIsHidden} />
         </Route>
-        <Route path="/error">
-          <Error404 />
+        <Route path="*">
+          <Error404 onIsHidden={setIsHidden}/>
         </Route>
       </Switch>
-     {isHidden && <Footer />}
+     {isHidden && isHiddenFooter && <Footer />}
     </div>
   );
 }

@@ -1,26 +1,43 @@
 import React from 'react';
 import './Navigation.css';
 import { Link } from 'react-router-dom';
+import { Hamburger } from '../Hamburger/Hamburger';
 
 export const Navigation = (props) => {
 	return (
 		<>
-		{ props.isAuth && <nav className="navigation">
-			<div className="navigation__wrapper">
-				<Link to="/movies" className="navigation__link">Фильмы</Link>
-				<Link to="/saved-movies" className="navigation__link navigation__link_active">Сохранённые фильмы</Link>
+			{ props.isAuth && <nav className="navigation">
+				<div className="navigation__wrapper navigation__wrapper_hidden">
+					<Link to="/movies" className="navigation__link">Фильмы</Link>
+					<Link to="/saved-movies" className="navigation__link navigation__link_active">Сохранённые фильмы</Link>
+				</div>
+				<div className="navigation__wrapper navigation__wrapper_hidden">
+					<Link to="/profile" className="navigation__link navigation__link_with_signin">Аккаунт</Link>
+					<div className="navigation__img"></div>
+				</div>
+				<Hamburger class="header__hamburger header__hamburger_with_signin"onHamburgerOpen={props.onHamburgerOpen} />
+			</nav>}
+			{!props.isAuth && <nav className="navigation navigation_without_signin" >
+				<div className="navigation__wrapper navigation__wrapper_without_signin">
+					<Link to="/signup" className="navigation__link">Регистрация</Link>
+					<Link to="/signin" className="navigation__link navigation__link_type_button">Войти</Link>
+				</div>
+			</nav>}
+
+			<div className={`popup ${props.isOpenHamburger && "popup_opened"}`}>
+				<div className="popup__container">
+					<div className="popup__wrapper">
+					<Link to="/" className="popup__link">Главная</Link>
+					<Link to="/movies" className="popup__link popup__link_active">Фильмы</Link>
+					<Link to="/saved-movies" className="popup__link">Сохранённые фильмы</Link>
+					</div>
+					<div className="popup__wrapper popup__wrapper_aligning">
+					<Link to="/profile" className="popup__link">Аккаунт</Link>
+					<div className="popup__img"></div>
+				</div>
+					<button className="popup__button" onClick={props.onHamburgerClose}></button>
+				</div>
 			</div>
-			<div className="navigation__wrapper">
-			<Link to="/profile" className="navigation__link navigation__link_with_signin">Аккаунт</Link>
-			<div className="navigation__img"></div>
-			</div>
-		</nav>}
-		{!props.isAuth && <nav className="navigation navigation_without_signin" >
-			<div className="navigation__wrapper navigation__wrapper_without_signin">
-				<Link to="/signup" className="navigation__link">Регистрация</Link>
-				<Link to="/signin" className="navigation__link navigation__link_type_button">Войти</Link>
-			</div>
-		</nav>}
 		</>
 	);
 }
