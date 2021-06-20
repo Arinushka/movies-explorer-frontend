@@ -24,6 +24,11 @@
 	align-self: center;
 }
 
+.navigation__link:hover {
+	opacity: 0.6;
+	transition-duration: 1s;
+}
+
 .navigation__link_with_signin {
 	font-size: 14px;
 }
@@ -142,6 +147,11 @@
 	align-self: center;
 }
 
+.popup__link:hover {
+	opacity: 0.6;
+	transition-duration: 1s;
+}
+
 .popup__link_active {
 	padding-bottom: 4px;
 	border-bottom: 2px solid #fff;
@@ -163,6 +173,11 @@
   position: absolute;
 	top: 23px;
 	right: 23px;
+}
+
+.popup__button:hover {
+	opacity: 0.6;
+	transition-duration: 1s;
 }
 
 .popup__img {

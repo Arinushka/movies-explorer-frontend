@@ -63,11 +63,17 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-color: transparent;
+	cursor: pointer;
 	border: none;
 	position: absolute;
 	right: 7px;
 	top: 7px;
 	background-image: url('../../images/search-form__button.svg');
+}
+
+.search-form__button:hover {
+	opacity: 0.6;
+	transition-duration: 1s;
 }
 
 .search-form__wrapper {

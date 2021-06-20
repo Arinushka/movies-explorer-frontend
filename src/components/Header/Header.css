@@ -24,6 +24,11 @@
 	height: 38px;
 }
 
+.logo:hover {
+	opacity: 0.6;
+	transition-duration: 1s;
+}
+
 .header__wrapper {
   align-self: center;
 }

@@ -52,6 +52,12 @@
 	font-size: 14px;
 	line-height: 17px;
 	margin-bottom: 60px;
+	cursor: pointer;
+}
+
+.error__button:hover {
+	opacity: 0.6;
+	transition-duration: 1s;
 }
 
 @media screen and (max-width: 767px) and (min-width: 300px) {

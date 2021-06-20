@@ -9,6 +9,11 @@
 	cursor: pointer;
 }
 
+.header__hamburger:hover {
+	opacity: 0.6;
+	transition-duration: 1s;
+}
+
 @media screen and (max-width: 5000px) and (min-width: 1279px) {
 	.header__hamburger_with_signin {
     display: none;

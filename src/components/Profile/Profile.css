@@ -97,6 +97,12 @@ margin-top: 123px;
 	font-size: 13px;
 	line-height: 16px;
 	margin-bottom: 16px;
+	cursor: pointer;
+}
+
+.profile__button:hover {
+	opacity: 0.6;
+	transition-duration: 1s;
 }
 
 .profile__link {
@@ -105,4 +111,9 @@ margin-top: 123px;
 	font-weight: 500;
 	font-size: 13px;
 	line-height: 16px;
+}
+
+.profile__link:hover {
+	opacity: 0.6;
+	transition-duration: 1s;
 }

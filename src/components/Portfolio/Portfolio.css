@@ -126,6 +126,11 @@
   align-self: flex-start;
 }
 
+.portfolio__link:hover {
+	opacity: 0.6;
+	transition-duration: 1s;
+}
+
 .portfolio__image {
 	padding: 0 5px 5px 0;
 }

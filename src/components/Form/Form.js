@@ -13,7 +13,7 @@ export const Form = (props) => {
 
 	return (
 		<div className="form">
-			<div className="logo"></div>
+			<Link to="/" className="logo"></Link>
 			<h1 className="form__title">{props.title}</h1>
 			<form className="form__container">
 				{props.children}

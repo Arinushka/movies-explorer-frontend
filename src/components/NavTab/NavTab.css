@@ -20,6 +20,11 @@
 	line-height: 16px;
 }
 
+.navtab__element:hover {
+	opacity: 0.6;
+	transition-duration: 1s;
+}
+
 @media screen and (max-width: 768px) {
 	.navtab__element {
 		margin-bottom: 30px;
