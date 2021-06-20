@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navigation.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Hamburger } from '../Hamburger/Hamburger';
 
 export const Navigation = (props) => {
@@ -27,9 +27,9 @@ export const Navigation = (props) => {
 			<div className={`popup ${props.isOpenHamburger && "popup_opened"}`}>
 				<div className="popup__container">
 					<div className="popup__wrapper">
-					<Link to="/" className="popup__link">Главная</Link>
-					<Link to="/movies" className="popup__link popup__link_active">Фильмы</Link>
-					<Link to="/saved-movies" className="popup__link">Сохранённые фильмы</Link>
+					<NavLink to="/" className="popup__link" exact activeClassName="popup__link_active">Главная</NavLink>
+					<NavLink to="/movies" className="popup__link" exact activeClassName="popup__link_active">Фильмы</NavLink>
+					<NavLink to="/saved-movies" className="popup__link" exact activeClassName="popup__link_active">Сохранённые фильмы</NavLink>
 					</div>
 					<div className="popup__wrapper popup__wrapper_aligning">
 					<Link to="/profile" className="popup__link">Аккаунт</Link>
