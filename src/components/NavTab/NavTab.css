@@ -1,7 +1,8 @@
-.navtab{
+.navtab {
 	display: flex;
 }
-.navtab__element{
+
+.navtab__element {
 	display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +12,7 @@
   border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
-	color:#fff;
+	color: #fff;
 	margin-right: 10px;
 	margin-bottom: 32px;
 	font-weight: 500;
@@ -36,6 +37,6 @@
 	}
 }
 
-.navtab__element:last-child{
+.navtab__element:last-child {
 	margin-right: 0;
 }

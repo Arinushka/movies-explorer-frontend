@@ -3,10 +3,9 @@ import './MoviesCard.css';
 
 export const MoviesCard = (props) => {
 
-
 	return (
 		<article className="movies-card">
-			<img className="movies-card__image" alt="Картинка к фильму" src={props.img}/>
+			<img className="movies-card__image" alt="Картинка к фильму" src={props.img} />
 			<div className="movies-card__wrapper">
 				<h2 className="movies-card__title">{props.title}</h2>
 				{!props.isSavedMovies && <button className="movies-card__button"></button>}

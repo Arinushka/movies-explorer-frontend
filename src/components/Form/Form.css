@@ -119,7 +119,7 @@
 	}
 }
 
-.form__check{
+.form__check {
 	font-weight: normal;
 	font-size: 14px;
 	line-height: 17px;
@@ -129,13 +129,13 @@
 }
 
 @media screen and (max-width: 767px) and (min-width: 300px) {
-  .form__check{
+  .form__check {
 		font-size: 12px;
 		line-height: 15px;
 	}
 }
 
-.form__link{
+.form__link {
 	text-decoration: none;
 	color: #4285F4;
 	font-weight: normal;

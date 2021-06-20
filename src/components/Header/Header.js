@@ -7,22 +7,22 @@ export const Header = (props) => {
 
   const [isHamburgerOpen, setIsHamburgerOpen] = React.useState(false);
 
-  function handleHamburgerOpen(){
+  function handleHamburgerOpen() {
     setIsHamburgerOpen(true)
   }
 
-  function handleHamburgerClose(){
+  function handleHamburgerClose() {
     setIsHamburgerOpen(false)
   }
   return (
     <header className="header">
       <Link to="/" className="logo"></Link>
       <div className="header__wrapper">
-        <Navigation 
-        isAuth={props.isAuth}
-        isOpenHamburger={isHamburgerOpen}
-        onHamburgerOpen={handleHamburgerOpen}
-        onHamburgerClose={handleHamburgerClose} />
+        <Navigation
+          isAuth={props.isAuth}
+          isOpenHamburger={isHamburgerOpen}
+          onHamburgerOpen={handleHamburgerOpen}
+          onHamburgerClose={handleHamburgerClose} />
       </div>
     </header>
   );

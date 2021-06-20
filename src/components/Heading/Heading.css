@@ -1,4 +1,4 @@
-.heading{
+.heading {
 	max-width: 1140px;
   color: #fff;
 	border-bottom: 1px solid #DADADA;
@@ -16,6 +16,7 @@
 		margin: 0 auto;
 	}
 }
+
 @media screen and (max-width: 767px) and (min-width: 300px) {
 	.heading {
 		max-width: 1040px;

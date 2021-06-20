@@ -3,10 +3,10 @@
   display: inline-block;
   width: 36px;
   height: 20px;
-  }
+}
   
-.checkbox__input{
-  display:none;
+.checkbox__input {
+  display: none;
 }
   
 .checkbox__switch {

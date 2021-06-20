@@ -3,6 +3,6 @@ import './Hamburger.css';
 
 export const Hamburger = (props) => {
 	return (
-	<button className={props.class} onClick={props.onHamburgerOpen}></button>
+		<button className={props.class} onClick={props.onHamburgerOpen}></button>
 	);
 }

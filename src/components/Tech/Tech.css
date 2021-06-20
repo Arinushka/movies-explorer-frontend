@@ -1,4 +1,4 @@
-.tech{
+.tech {
   max-width: 1280px;
   color:#fff;
 	background-color: #272727;
@@ -16,7 +16,7 @@
 }
   
 @media screen and (max-width: 767px) and (min-width: 300px) {
-	.tech{
+	.tech {
 		padding-top: 50px;
 		padding-left: 6.4%;
 		padding-right: 6.4%;
@@ -24,7 +24,7 @@
 	}
 }
 
-.tech__title{
+.tech__title {
   font-weight: normal;
   font-size: 48px;
   line-height: 58px;
@@ -34,13 +34,13 @@
 }
 
 @media screen and (max-width: 768px) {
-	.tech__title{
+	.tech__title {
 		margin: 80px auto 23px auto;
 	}
 }
 
 @media screen and (max-width: 450px) {
-	.tech__title{
+	.tech__title {
 		margin: 60px auto 24px auto;
 		font-size: 48px;
 		font-size: 30px;
@@ -48,7 +48,7 @@
 	}
 }
 
-.tech__subtitle{
+.tech__subtitle {
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;
@@ -59,7 +59,7 @@
 }
 
 @media screen and (max-width: 768px) {
-	.tech__subtitle{
+	.tech__subtitle {
 		font-size: 12px;
     line-height: 18px;
 		margin: 0 auto 83px auto;
@@ -67,14 +67,14 @@
 }
 
 @media screen and (max-width: 450px) {
-	.tech__subtitle{
+	.tech__subtitle {
 		font-size: 11px;
     line-height: 16px;
 		margin: 0 auto 50px auto;
 	}
 }
 
-.tech__list{
+.tech__list {
 	display: flex;
 	justify-content: center;
 	padding: 0;
@@ -82,7 +82,7 @@
 }
 
 @media screen and (max-width: 450px) {
-	.tech__list{
+	.tech__list {
 		display: grid;
 		grid-template-columns: 0.3fr 0.3fr;
 		grid-template-areas: 
@@ -96,7 +96,7 @@
 	}
 }
 
-.tech__cell{
+.tech__cell {
 	font-weight: normal;
   font-size: 14px;
   line-height: 17px;
@@ -112,8 +112,8 @@
 	align-items: center;
 }
 
-@media screen and (max-width: 1279px) and (max-width: 768px){
-	.tech__cell{
+@media screen and (max-width: 1279px) and (max-width: 768px) {
+	.tech__cell {
 		width: 84px;
 		min-height: 57px;
 		margin-bottom: 90px;
@@ -122,18 +122,17 @@
 		grid-area: a, b;
 		align-self: center;
 		justify-self: center;
-
 	}
 }
 
-@media screen and (max-width: 450px){
-	.tech__cell{
+@media screen and (max-width: 450px) {
+	.tech__cell {
 	  font-size: 12px;
     line-height: 15px;
 		margin: 0;
 	}
 }
 
-.tech__cell:last-child{
+.tech__cell:last-child {
 	margin-right: 0;
 }

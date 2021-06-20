@@ -25,19 +25,19 @@ export const App = () => {
 
   return (
     <div className="app">
-{isHidden && <Header isAuth={isAuth} />}
+      {isHidden && <Header isAuth={isAuth} />}
       <Switch>
         <Route exact path="/">
-          <Main setAuth={handleLink}/>
+          <Main setAuth={handleLink} />
         </Route>
         <Route path="/movies">
           <Movies />
         </Route>
         <Route path="/saved-movies">
-          <SavedMovies isSavedMovies={isSavedMovies}/>
+          <SavedMovies isSavedMovies={isSavedMovies} />
         </Route>
         <Route path="/profile">
-          <Profile onIsHiddenFooter={setIsHiddenFooter}/>
+          <Profile onIsHiddenFooter={setIsHiddenFooter} />
         </Route>
         <Route path="/signup">
           <Register onIsHidden={setIsHidden} />
@@ -46,10 +46,10 @@ export const App = () => {
           <Login onIsHidden={setIsHidden} />
         </Route>
         <Route path="*">
-          <Error404 onIsHidden={setIsHidden}/>
+          <Error404 onIsHidden={setIsHidden} />
         </Route>
       </Switch>
-     {isHidden && isHiddenFooter && <Footer />}
+      {isHidden && isHiddenFooter && <Footer />}
     </div>
   );
 }

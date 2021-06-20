@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input } from '../Input/Input';
+import { Link } from 'react-router-dom';
 import './Profile.css';
 
 export const Profile = (props) => {
@@ -18,18 +19,22 @@ export const Profile = (props) => {
 				<div className="profile__wrapper">
 					<Input
 						className="profile__input"
-						type="text" />
+						type="text"
+						minLength="2"
+						maxLength="30" />
 					<label className="profile__label">Имя</label>
 				</div>
 				<div className="profile__wrapper">
 					<Input
 						className="profile__input"
-						type="email" />
+						type="email"
+						minLength="2"
+						maxLength="30" />
 					<label className="profile__label">Email</label>
 				</div>
 				<button className="profile__button">Редактировать</button>
 			</form>
-			<a className="profile__link" href="#">Выйти из аккаунта</a>
+			<Link to="/signin"className="profile__link">Выйти из аккаунта</Link>
 		</div>
 	);
 }

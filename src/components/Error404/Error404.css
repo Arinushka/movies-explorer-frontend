@@ -7,7 +7,6 @@
 	margin: 0 auto;
 }
 
-
 @media screen and (max-width: 1279px) and (min-width: 300px) {
 	.error {
 		max-width: 100%;
@@ -37,17 +36,17 @@
 }
 
 @media screen and (max-width: 767px) and (min-width: 300px) {
-	.error__subtitle{
+	.error__subtitle {
 		font-size: 12px;
     line-height: 15px;
 		margin: 10px 0 284px 0;
 	}
 }
 
-.error__button{
+.error__button {
 	color: #4285F4;
 	background-color: transparent;
-	border:none;
+	border: none;
 	outline: none;
 	font-weight: normal;
 	font-size: 14px;
@@ -56,7 +55,7 @@
 }
 
 @media screen and (max-width: 767px) and (min-width: 300px) {
-	.error__button{
+	.error__button {
 		font-size: 12px;
     line-height: 15px;
 	}

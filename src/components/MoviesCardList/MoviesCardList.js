@@ -18,56 +18,56 @@ export const MoviesCardList = () => {
 	return (
 		<section className="card-list">
 			<div className="card-list__wrapper">
-			<MoviesCard
-				img={img1}
-				title="33 слова о дизайне"
-				time="1ч 47м"/>
 				<MoviesCard
-				img={img2}
-				title="Киноальманах «100 лет дизайна»"
-				time="1ч 3м"/>
+					img={img1}
+					title="33 слова о дизайне"
+					time="1ч 47м" />
 				<MoviesCard
-				img={img3}
-				title="В погоне за Бенкси"
-				time="1ч 42м"/>
+					img={img2}
+					title="Киноальманах «100 лет дизайна»"
+					time="1ч 3м" />
 				<MoviesCard
-				img={img4}
-				title="Баския: Взрыв реальности"
-				time="1ч 21м"/>
+					img={img3}
+					title="В погоне за Бенкси"
+					time="1ч 42м" />
 				<MoviesCard
-				img={img5}
-				title="Бег это свобода"
-				time="1ч 44м"/>
+					img={img4}
+					title="Баския: Взрыв реальности"
+					time="1ч 21м" />
 				<MoviesCard
-				img={img6}
-				title="Книготорговцы"
-				time="1ч 37м"/>
+					img={img5}
+					title="Бег это свобода"
+					time="1ч 44м" />
 				<MoviesCard
-				img={img7}
-				title="Когда я думаю о Германии ночью"
-				time="1ч 56м"/>
+					img={img6}
+					title="Книготорговцы"
+					time="1ч 37м" />
 				<MoviesCard
-				img={img8}
-				title="Gimme Danger: История Игги и The Stooge"
-				time="1ч 59м"/>
+					img={img7}
+					title="Когда я думаю о Германии ночью"
+					time="1ч 56м" />
 				<MoviesCard
-				img={img9}
-				title="Дженис: Маленькая девочка грустит"
-				time="1ч 42м"/>
+					img={img8}
+					title="Gimme Danger: История Игги и The Stooge"
+					time="1ч 59м" />
 				<MoviesCard
-				img={img10}
-				title="Соберись перед прыжком"
-				time="1ч 10м"/>
+					img={img9}
+					title="Дженис: Маленькая девочка грустит"
+					time="1ч 42м" />
 				<MoviesCard
-				img={img11}
-				title="Пи Джей Харви: A dog called money"
-				time="1ч 4м"/>
+					img={img10}
+					title="Соберись перед прыжком"
+					time="1ч 10м" />
 				<MoviesCard
-				img={img12}
-				title="По волнам: Искусство звука в кино"
-				time="1ч 7м"/>
-				</div>
-				<button className="card-list__button">Еще</button>
+					img={img11}
+					title="Пи Джей Харви: A dog called money"
+					time="1ч 4м" />
+				<MoviesCard
+					img={img12}
+					title="По волнам: Искусство звука в кино"
+					time="1ч 7м" />
+			</div>
+			<button className="card-list__button">Еще</button>
 		</section>
 	);
 }

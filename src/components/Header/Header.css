@@ -1,28 +1,29 @@
-.header{
-  width:1140px;
+.header {
+  width: 1140px;
   margin: 18px auto 18px auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-@media screen and (max-width: 1279px) and (min-width: 768px){
+@media screen and (max-width: 1279px) and (min-width: 768px) {
   .header {
     width: calc(100% - 60px);
   }
 }
-@media screen and (max-width: 767px) and (min-width: 300px){
+
+@media screen and (max-width: 767px) and (min-width: 300px) {
   .header {
     width: calc(100% - 28px);
   }
 }
 
-.logo{
+.logo {
   background-image: url(../../images/logo.svg);
 	width: 38px;
 	height: 38px;
 }
 
-.header__wrapper{
+.header__wrapper {
   align-self: center;
 }

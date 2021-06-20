@@ -4,7 +4,6 @@ import { Input } from '../Input/Input';
 
 export const Login = (props) => {
 
-	
 	return (
 		<Form
 			title="Рады видеть!"
@@ -16,16 +15,19 @@ export const Login = (props) => {
 			<div className="form__wrapper">
 				<Input
 					className="form__input"
-					type="email" />
+					type="email"
+					minLength="2"
+					maxLength="30" />
 				<label className="form__label">Email</label>
 			</div>
 			<div className="form__wrapper form__wrapper_for_login">
 				<Input
 					className="form__input"
-					type="password" />
+					type="password"
+					minLength="4"
+					maxLength="16" />
 				<label className="form__label">Пароль</label>
 			</div>
-
 		</Form>
 	);
 }
