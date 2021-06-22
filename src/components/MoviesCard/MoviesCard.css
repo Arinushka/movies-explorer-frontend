@@ -95,3 +95,8 @@
 	background-image: url(../../images/button__delete.svg);
 	align-self: center;
 }
+
+.movies-card__button_like_active {
+	background-image: url(../../images/like__active.svg);
+	align-self: center;
+}

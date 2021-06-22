@@ -21,7 +21,8 @@ export const MoviesCardList = () => {
 				<MoviesCard
 					img={img1}
 					title="33 слова о дизайне"
-					time="1ч 47м" />
+					time="1ч 47м"
+					isLiked="true" />
 				<MoviesCard
 					img={img2}
 					title="Киноальманах «100 лет дизайна»"
@@ -41,7 +42,8 @@ export const MoviesCardList = () => {
 				<MoviesCard
 					img={img6}
 					title="Книготорговцы"
-					time="1ч 37м" />
+					time="1ч 37м"
+					isLiked="true" />
 				<MoviesCard
 					img={img7}
 					title="Когда я думаю о Германии ночью"
@@ -53,11 +55,13 @@ export const MoviesCardList = () => {
 				<MoviesCard
 					img={img9}
 					title="Дженис: Маленькая девочка грустит"
-					time="1ч 42м" />
+					time="1ч 42м"
+					isLiked="true" />
 				<MoviesCard
 					img={img10}
 					title="Соберись перед прыжком"
-					time="1ч 10м" />
+					time="1ч 10м"
+					isLiked="true" />
 				<MoviesCard
 					img={img11}
 					title="Пи Джей Харви: A dog called money"

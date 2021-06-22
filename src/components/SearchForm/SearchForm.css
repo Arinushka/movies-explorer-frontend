@@ -40,7 +40,11 @@
 	background-color: #202020;
 	border: 1.5px solid rgba(170, 170, 170, 0.2);
 	outline: none;
-	color: #fff;	
+	color: #fff;
+}
+
+.search-form__input:focus{
+	border: 1.5px solid rgba(66, 133, 244, 0.8);
 }
 
 @media screen and (max-width: 1279px) and (min-width: 768px) {
