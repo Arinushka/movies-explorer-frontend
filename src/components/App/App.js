@@ -8,12 +8,13 @@ import { Register } from "../Register/Register";
 import { Login } from "../Login/Login";
 import { Error404 } from "../Error404/Error404";
 import React from "react";
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.css';
+import * as auth from "../../utils/auth.js";
 
-export const App = () => {
+function App (props) {
 
-  const [isAuth, setIsAuth] = React.useState(true);
+  const [isAuth, setIsAuth] = React.useState(false);
   const [isSavedMovies, setIsSavedMovies] = React.useState(true);
   const [isHidden, setIsHidden] = React.useState(true);
   const [isHiddenFooter, setIsHiddenFooter] = React.useState(true);
@@ -22,6 +23,30 @@ export const App = () => {
     setIsAuth(boolean);
   }
 
+
+  function handleRegister(name, email, password) {
+    auth.register(name, email, password)
+      .then((res) => {
+        props.history.push('/signin');
+      })
+      .catch((err) => {
+        console.log(err)
+      }
+      );
+  }
+
+  function handleLogin(email, password) {
+    auth.authorize(email, password)
+      .then((res) => {
+        setIsAuth(true)
+        props.history.push('/');
+        localStorage.setItem('auth', true);
+      })
+      .catch((err) => {
+        console.log(err)
+      }
+      );
+  }
 
   return (
     <div className="app">
@@ -40,10 +65,14 @@ export const App = () => {
           <Profile onIsHiddenFooter={setIsHiddenFooter} />
         </Route>
         <Route path="/signup">
-          <Register onIsHidden={setIsHidden} />
+          <Register 
+          onIsHidden={setIsHidden} 
+          onRegister={handleRegister}/>
         </Route>
         <Route path="/signin">
-          <Login onIsHidden={setIsHidden} />
+          <Login 
+          onIsHidden={setIsHidden}
+          onLogin={handleLogin}/>
         </Route>
         <Route path="*">
           <Error404 onIsHidden={setIsHidden} />
@@ -53,3 +82,5 @@ export const App = () => {
     </div>
   );
 }
+
+export default withRouter(App);
