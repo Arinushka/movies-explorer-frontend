@@ -34,6 +34,38 @@ export const authorize = (email, password) => {
     })
 };
 
+export const checkToken = () => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.status)
+      } else {
+        return res.json();
+      }
+    })
+};
+
+export const signOut = () => {
+  return fetch(`${BASE_URL}/signout`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.status)
+      }
+    })
+};
+
 export const getUserInfo = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Input } from '../Input/Input';
-import { Link } from 'react-router-dom';
 import './Profile.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -39,7 +38,7 @@ export const Profile = (props) => {
 				</div>
 				<button className="profile__button">Редактировать</button>
 			</form>
-			<Link to="/signin" className="profile__link">Выйти из аккаунта</Link>
+			<button  className="profile__link" onClick={props.onSignOut}>Выйти из аккаунта</button>
 		</div>
 	);
 }

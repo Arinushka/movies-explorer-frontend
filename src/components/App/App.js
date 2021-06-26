@@ -51,6 +51,38 @@ function App(props) {
       );
   }
 
+  function handleTokenCheck() {
+    if (localStorage.getItem('auth')) {
+      mainApi.checkToken()
+        .then((res) => {
+          if (res) {
+            setIsAuth(true);
+            props.history.push("/movies");
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+    }
+  }
+
+  function handleSignOut() {
+    mainApi.signOut()
+    .then((res) => {
+      props.history.push('/signin');
+      setIsAuth(false);
+      localStorage.removeItem('auth');
+    })
+    .catch((err) => {
+      console.log(err)
+    }
+    );
+  }
+
+  React.useEffect(() => {
+    handleTokenCheck();
+  }, []);
+
   React.useEffect(() => {
     if (isAuth) {
       mainApi.getUserInfo()
@@ -67,40 +99,41 @@ function App(props) {
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
-      {isHidden && <Header isAuth={isAuth} />}
-      <Switch>
-        <Route exact path="/">
-          <Main setAuth={handleLink} />
-        </Route>
-        <ProtectedRoute
-          path="/saved-movies"
-          component={SavedMovies}
-          isAuth={isAuth} />
-        <ProtectedRoute
-          path="/movies"
-          component={Movies}
-          isSavedMovies={isSavedMovies}
-          isAuth={isAuth} />
-        <ProtectedRoute
-          path="/profile"
-          component={Profile}
-          onIsHiddenFooter={setIsHiddenFooter}
-          isAuth={isAuth} />
-        <Route path="/signup">
-          <Register
-            onIsHidden={setIsHidden}
-            onRegister={handleRegister} />
-        </Route>
-        <Route path="/signin">
-          <Login
-            onIsHidden={setIsHidden}
-            onLogin={handleLogin} />
-        </Route>
-        <Route path="*">
-          <Error404 onIsHidden={setIsHidden} />
-        </Route>
-      </Switch>
-      {isHidden && isHiddenFooter && <Footer />}
+        {isHidden && <Header isAuth={isAuth} />}
+        <Switch>
+          <Route exact path="/">
+            <Main setAuth={handleLink} />
+          </Route>
+          <ProtectedRoute
+            path="/saved-movies"
+            component={SavedMovies}
+            isAuth={isAuth} />
+          <ProtectedRoute
+            path="/movies"
+            component={Movies}
+            isSavedMovies={isSavedMovies}
+            isAuth={isAuth} />
+          <ProtectedRoute
+            path="/profile"
+            component={Profile}
+            onIsHiddenFooter={setIsHiddenFooter}
+            isAuth={isAuth}
+            onSignOut={handleSignOut} />
+          <Route path="/signup">
+            <Register
+              onIsHidden={setIsHidden}
+              onRegister={handleRegister} />
+          </Route>
+          <Route path="/signin">
+            <Login
+              onIsHidden={setIsHidden}
+              onLogin={handleLogin} />
+          </Route>
+          <Route path="*">
+            <Error404 onIsHidden={setIsHidden} />
+          </Route>
+        </Switch>
+        {isHidden && isHiddenFooter && <Footer />}
       </CurrentUserContext.Provider>
     </div>
   );

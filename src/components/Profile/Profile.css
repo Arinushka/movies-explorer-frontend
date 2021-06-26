@@ -107,10 +107,13 @@ margin-top: 123px;
 
 .profile__link {
 	color: #EE3465;
-	text-decoration: none;
 	font-weight: 500;
 	font-size: 13px;
 	line-height: 16px;
+	background-color: transparent;
+	cursor: pointer;
+	outline: none;
+	border: none;
 }
 
 .profile__link:hover {
