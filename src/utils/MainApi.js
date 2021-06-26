@@ -33,3 +33,21 @@ export const authorize = (email, password) => {
       }
     })
 };
+
+export const getUserInfo = () => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.status)
+      } else {
+        console.log(res)
+        return res.json();
+      }
+    })
+}

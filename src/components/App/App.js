@@ -10,8 +10,9 @@ import { Error404 } from "../Error404/Error404";
 import React from "react";
 import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.css';
-import * as auth from "../../utils/auth.js";
+import * as mainApi from "../../utils/MainApi.js";
 import { ProtectedRoute } from "../ProtectedRoute";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App(props) {
 
@@ -19,6 +20,7 @@ function App(props) {
   const [isSavedMovies, setIsSavedMovies] = React.useState(true);
   const [isHidden, setIsHidden] = React.useState(true);
   const [isHiddenFooter, setIsHiddenFooter] = React.useState(true);
+  const [currentUser, setCurrentUser] = React.useState({ name: "", email: "", id: "" });
 
   function handleLink(boolean) {
     setIsAuth(boolean);
@@ -26,7 +28,7 @@ function App(props) {
 
 
   function handleRegister(name, email, password) {
-    auth.register(name, email, password)
+    mainApi.register(name, email, password)
       .then((res) => {
         props.history.push('/signin');
       })
@@ -37,7 +39,7 @@ function App(props) {
   }
 
   function handleLogin(email, password) {
-    auth.authorize(email, password)
+    mainApi.authorize(email, password)
       .then((res) => {
         setIsAuth(true)
         props.history.push('/movies');
@@ -49,8 +51,22 @@ function App(props) {
       );
   }
 
+  React.useEffect(() => {
+    if (isAuth) {
+      mainApi.getUserInfo()
+        .then((res) => {
+          setCurrentUser(res.data)
+          console.log(res.data)
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isAuth]);
+
   return (
     <div className="app">
+      <CurrentUserContext.Provider value={currentUser}>
       {isHidden && <Header isAuth={isAuth} />}
       <Switch>
         <Route exact path="/">
@@ -85,6 +101,7 @@ function App(props) {
         </Route>
       </Switch>
       {isHidden && isHiddenFooter && <Footer />}
+      </CurrentUserContext.Provider>
     </div>
   );
 }

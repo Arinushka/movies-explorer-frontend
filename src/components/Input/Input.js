@@ -9,7 +9,7 @@ export const Input = (props) => {
 
 	return (
 		<div className="input">
-			<input onChange={handleChange} value={props.value} className={props.className} type={props.type} minLength={props.minLength} maxLength={props.maxLength} required></input>
+			<input onChange={handleChange} value={props.value} placeholder={props.placeholder} className={props.className} type={props.type} minLength={props.minLength} maxLength={props.maxLength} required></input>
 			<span className="input__error"></span>
 		</div>
 	);

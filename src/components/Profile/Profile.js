@@ -2,8 +2,11 @@ import React from 'react';
 import { Input } from '../Input/Input';
 import { Link } from 'react-router-dom';
 import './Profile.css';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 export const Profile = (props) => {
+
+	const currentUser = React.useContext(CurrentUserContext);
 
 	React.useEffect(() => {
 		props.onIsHiddenFooter(false)
@@ -14,14 +17,15 @@ export const Profile = (props) => {
 
 	return (
 		<div className="profile">
-			<h1 className="profile__title">Привет, Виталий!</h1>
+			<h1 className="profile__title">Привет, {currentUser.name}!</h1>
 			<form className="profile__form">
 				<div className="profile__wrapper">
 					<Input
 						className="profile__input"
 						type="text"
 						minLength="2"
-						maxLength="30" />
+						maxLength="30"
+						placeholder={currentUser.name} />
 					<label className="profile__label">Имя</label>
 				</div>
 				<div className="profile__wrapper">
@@ -29,12 +33,13 @@ export const Profile = (props) => {
 						className="profile__input"
 						type="email"
 						minLength="2"
-						maxLength="30" />
+						maxLength="30"
+						placeholder={currentUser.email} />
 					<label className="profile__label">Email</label>
 				</div>
 				<button className="profile__button">Редактировать</button>
 			</form>
-			<Link to="/signin"className="profile__link">Выйти из аккаунта</Link>
+			<Link to="/signin" className="profile__link">Выйти из аккаунта</Link>
 		</div>
 	);
 }
