@@ -79,6 +79,16 @@ function App(props) {
     );
   }
 
+  function handleUpdateUser( data) {
+    mainApi.setUserInfo(data.name, data.email)
+      .then((res) => {
+        setCurrentUser(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   React.useEffect(() => {
     handleTokenCheck();
   }, []);
@@ -118,7 +128,8 @@ function App(props) {
             component={Profile}
             onIsHiddenFooter={setIsHiddenFooter}
             isAuth={isAuth}
-            onSignOut={handleSignOut} />
+            onSignOut={handleSignOut} 
+            onUpdateUser={handleUpdateUser}/>
           <Route path="/signup">
             <Register
               onIsHidden={setIsHidden}

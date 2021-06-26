@@ -83,3 +83,25 @@ export const getUserInfo = () => {
       }
     })
 }
+
+export const setUserInfo = (newName, newEmail) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'PATCH',
+    credentials: 'include',
+    headers:{
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: newName,
+      email: newEmail
+    })
+  })
+  .then(res => {
+    if (!res.ok) {
+      return Promise.reject(res.status)
+    } else {
+      console.log(res)
+      return res.json();
+    }
+  })
+}
