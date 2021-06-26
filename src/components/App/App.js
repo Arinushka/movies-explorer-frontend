@@ -11,8 +11,9 @@ import React from "react";
 import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.css';
 import * as auth from "../../utils/auth.js";
+import { ProtectedRoute } from "../ProtectedRoute";
 
-function App (props) {
+function App(props) {
 
   const [isAuth, setIsAuth] = React.useState(false);
   const [isSavedMovies, setIsSavedMovies] = React.useState(true);
@@ -39,7 +40,7 @@ function App (props) {
     auth.authorize(email, password)
       .then((res) => {
         setIsAuth(true)
-        props.history.push('/');
+        props.history.push('/movies');
         localStorage.setItem('auth', true);
       })
       .catch((err) => {
@@ -55,24 +56,29 @@ function App (props) {
         <Route exact path="/">
           <Main setAuth={handleLink} />
         </Route>
-        <Route path="/movies">
-          <Movies />
-        </Route>
-        <Route path="/saved-movies">
-          <SavedMovies isSavedMovies={isSavedMovies} />
-        </Route>
-        <Route path="/profile">
-          <Profile onIsHiddenFooter={setIsHiddenFooter} />
-        </Route>
+        <ProtectedRoute
+          path="/saved-movies"
+          component={SavedMovies}
+          isAuth={isAuth} />
+        <ProtectedRoute
+          path="/movies"
+          component={Movies}
+          isSavedMovies={isSavedMovies}
+          isAuth={isAuth} />
+        <ProtectedRoute
+          path="/profile"
+          component={Profile}
+          onIsHiddenFooter={setIsHiddenFooter}
+          isAuth={isAuth} />
         <Route path="/signup">
-          <Register 
-          onIsHidden={setIsHidden} 
-          onRegister={handleRegister}/>
+          <Register
+            onIsHidden={setIsHidden}
+            onRegister={handleRegister} />
         </Route>
         <Route path="/signin">
-          <Login 
-          onIsHidden={setIsHidden}
-          onLogin={handleLogin}/>
+          <Login
+            onIsHidden={setIsHidden}
+            onLogin={handleLogin} />
         </Route>
         <Route path="*">
           <Error404 onIsHidden={setIsHidden} />
