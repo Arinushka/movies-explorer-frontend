@@ -1,10 +1,15 @@
 import React from 'react';
 import './FilterCheckbox.css';
 
-export const FilterCheckbox = () => {
+export const FilterCheckbox = (props) => {
+
+	function handleCheck() {
+		props.onIsDuration(!props.isDuration)
+	}
+
 	return (
 		<label className="checkbox">
-			<input className="checkbox__input" type="checkbox" />
+			<input onChange={handleCheck} checked={props.isDuration} className="checkbox__input" type="checkbox" />
 			<span className="checkbox__switch"></span>
 		</label>
 	);
