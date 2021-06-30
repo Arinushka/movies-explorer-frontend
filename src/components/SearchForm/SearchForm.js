@@ -25,8 +25,11 @@ export const SearchForm = (props) => {
 				<div className="search-form__wrapper">
 					<label className="search-form__title">Короткометражки</label>
 					<FilterCheckbox
-						onIsDuration={props.onIsDuration}
-						isDuration={props.isDuration} />
+						onFindByDuration={props.onFindByDuration}
+						movies={props.movies}
+						onSetMovies={props.onSetMovies}
+						keyValue={keyValue}
+						onGetFilms={props.onGetFilms}/>
 				</div>
 			</form>
 		</section>

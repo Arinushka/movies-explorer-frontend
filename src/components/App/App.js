@@ -25,7 +25,6 @@ function App(props) {
   const [currentUser, setCurrentUser] = React.useState({ name: "", email: "", id: "" });
   const [movies, setMovies] = React.useState([]);
   const [savedMovies, setSavedMovies] = React.useState([]);
-  const [isDurationMovies, setIsDurationMovies] = React.useState(false);
 
   function handleLink(boolean) {
     setIsAuth(boolean);
@@ -110,7 +109,11 @@ function App(props) {
   function findFilms(keyValue) {
     handleSavedMovies()
     getFilms();
-    search.handleSearch(keyValue, JSON.parse(localStorage.getItem('movies')), isDurationMovies, setMovies);
+    setMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('movies'))))
+  }
+
+  function findByDuration(setFilms, films){
+     setFilms(search.searchMoviesByDuration(films))
   }
 
   function handleSavedMovies() {
@@ -190,10 +193,10 @@ function App(props) {
             isAuth={isAuth}
             onGetFilms={findFilms}
             movies={movies}
-            onIsDuration={setIsDurationMovies}
-            isDuration={isDurationMovies}
+            onSetMovies={setMovies}
             onHandleMovieButton={handlesavedMovie}
-            savedMovies={savedMovies} />
+            savedMovies={savedMovies}
+            onFindByDuration={findByDuration} />
           <ProtectedRoute
             path="/profile"
             component={Profile}

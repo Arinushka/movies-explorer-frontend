@@ -7,8 +7,9 @@ export const Movies = (props) => {
 		<>
 			<SearchForm
 				onGetFilms={props.onGetFilms} 
-				onIsDuration={props.onIsDuration}
-				isDuration={props.isDuration}/>
+				onFindByDuration={props.onFindByDuration}
+				movies={props.movies}
+				onSetMovies={props.onSetMovies}/>
 			<MoviesCardList
 			movies={props.movies} 
 			onHandleMovieButton={props.onHandleMovieButton}
