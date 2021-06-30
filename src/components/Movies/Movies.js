@@ -10,7 +10,9 @@ export const Movies = (props) => {
 				onIsDuration={props.onIsDuration}
 				isDuration={props.isDuration}/>
 			<MoviesCardList
-			movies={props.movies} />
+			movies={props.movies} 
+			onHandleMovieButton={props.onHandleMovieButton}
+			savedMovies={props.savedMovies}/>
 		</>
 	);
 }

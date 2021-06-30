@@ -9,8 +9,11 @@ export const MoviesCardList = (props) => {
 				{props.movies.map((movie) => (
 					<MoviesCard
 						key={movie.id}
-						movie={movie} />
+						movie={movie}
+						onHandleMovieButton={props.onHandleMovieButton}
+						savedMovies={props.savedMovies} />
 				))}
+				{console.log(props.movies)}
 			</div>
 			<button className="card-list__button">Еще</button>
 		</section>

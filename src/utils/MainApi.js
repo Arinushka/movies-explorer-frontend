@@ -105,3 +105,86 @@ export const setUserInfo = (newName, newEmail) => {
     }
   })
 }
+
+export const addMovie = (movie) => {
+  console.log(movie)
+ 
+  return fetch(`${BASE_URL}/movies`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      country: movie.country,
+      director: movie.director,
+      duration: movie.duration,
+      year: movie.year,
+      description: movie.description,
+      image:'https://api.nomoreparties.co' + movie.image.url,
+      trailer: movie.trailerLink,
+      thumbnail: 'https://api.nomoreparties.co' + movie.image.formats.thumbnail.url,
+      owner: movie.owner,
+      movieId: movie.id,
+      nameRU: movie.nameRU,
+      nameEN: movie.nameEN
+    })
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.status)
+      } else {
+        console.log(res)
+        return res.json();
+      }
+    })
+}
+
+export const movieDelete = (movie) => {
+  return fetch(`${BASE_URL}/movies/${movie}`, {
+    method: 'DELETE',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.status)
+      } else {
+        console.log(res)
+        return res.json();
+      }
+    })
+}
+
+export const changeSaveMovieStatus = (movie, isSaved) => {
+  const id = movie.id || movie.movieId;
+  if (isSaved) {
+
+    return movieDelete(id)
+  } else {
+
+    return addMovie(movie)
+  }
+}
+
+
+export const getFilms = () => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: 'GET',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject(res.status)
+      } else {
+        console.log(res)
+        return res.json();
+      }
+    })
+}

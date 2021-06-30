@@ -24,7 +24,8 @@ function App(props) {
   const [isHiddenFooter, setIsHiddenFooter] = React.useState(true);
   const [currentUser, setCurrentUser] = React.useState({ name: "", email: "", id: "" });
   const [movies, setMovies] = React.useState([]);
-  const [isDurationMovies, setIsDurationMovies] = React.useState(false)
+  const [savedMovies, setSavedMovies] = React.useState([]);
+  const [isDurationMovies, setIsDurationMovies] = React.useState(false);
 
   function handleLink(boolean) {
     setIsAuth(boolean);
@@ -72,15 +73,15 @@ function App(props) {
 
   function handleSignOut() {
     mainApi.signOut()
-    .then((res) => {
-      props.history.push('/signin');
-      setIsAuth(false);
-      localStorage.removeItem('auth');
-    })
-    .catch((err) => {
-      console.log(err)
-    }
-    );
+      .then((res) => {
+        props.history.push('/signin');
+        setIsAuth(false);
+        localStorage.removeItem('auth');
+      })
+      .catch((err) => {
+        console.log(err)
+      }
+      );
   }
 
   function handleUpdateUser(data) {
@@ -94,23 +95,53 @@ function App(props) {
   }
 
   function getFilms() {
-    if(!localStorage.getItem('movies')){
-    moviesApi.getFilms()
-      .then((res) => {
-        localStorage.setItem('movies', JSON.stringify(res));
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (!localStorage.getItem('movies')) {
+      moviesApi.getFilms()
+        .then((res) => {
+          localStorage.setItem('movies', JSON.stringify(res));
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }
 
   function findFilms(keyValue) {
+    handleSavedMovies()
     getFilms();
     search.handleSearch(keyValue, JSON.parse(localStorage.getItem('movies')), isDurationMovies, setMovies);
   }
 
+  function handleSavedMovies() {
+    mainApi.getFilms()
+      .then((res) => {
+        console.log(res)
+        setSavedMovies(res)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function handlesavedMovie(movie) {
+      const id = movie.id || movie.movieId;
+      console.log(movie)
+      const isLiked = savedMovies.some(item => item.movieId === id && item.owner === currentUser.id);
+      console.log(isLiked)
+      mainApi.changeSaveMovieStatus(movie, isLiked)
+        .then((newMovie) => {
+          handleSavedMovies()
+          setMovies((films) =>
+            films.map((film) => (
+              film.id === movie.movieId ? newMovie : film))
+          );
+  
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
 
   React.useEffect(() => {
     handleTokenCheck();
@@ -120,8 +151,8 @@ function App(props) {
     if (isAuth) {
       mainApi.getUserInfo()
         .then((res) => {
-          setCurrentUser(res.data)
-          console.log(res.data)
+          setCurrentUser(res)
+          console.log(res)
         })
         .catch((err) => {
           console.log(err);
@@ -145,18 +176,20 @@ function App(props) {
             path="/movies"
             component={Movies}
             isSavedMovies={isSavedMovies}
-            isAuth={isAuth} 
+            isAuth={isAuth}
             onGetFilms={findFilms}
             movies={movies}
             onIsDuration={setIsDurationMovies}
-            isDuration={isDurationMovies}/>
+            isDuration={isDurationMovies}
+            onHandleMovieButton={handlesavedMovie}
+            savedMovies={savedMovies} />
           <ProtectedRoute
             path="/profile"
             component={Profile}
             onIsHiddenFooter={setIsHiddenFooter}
             isAuth={isAuth}
-            onSignOut={handleSignOut} 
-            onUpdateUser={handleUpdateUser}/>
+            onSignOut={handleSignOut}
+            onUpdateUser={handleUpdateUser} />
           <Route path="/signup">
             <Register
               onIsHidden={setIsHidden}
