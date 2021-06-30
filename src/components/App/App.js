@@ -75,7 +75,9 @@ function App(props) {
       .then((res) => {
         props.history.push('/signin');
         setIsAuth(false);
-        localStorage.removeItem('auth');
+        localStorage.removeItem('auth', 'movies', 'savedMovies');
+        localStorage.removeItem('movies');
+        localStorage.removeItem('savedMovies');
       })
       .catch((err) => {
         console.log(err)
@@ -109,7 +111,12 @@ function App(props) {
   function findFilms(keyValue) {
     handleSavedMovies()
     getFilms();
+    console.log(JSON.parse(localStorage.getItem('movies')))
     setMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('movies'))))
+  }
+
+  function findSavedMovies(keyValue){
+setSavedMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('savedMovies'))))
   }
 
   function findByDuration(setFilms, films){
@@ -119,6 +126,7 @@ function App(props) {
   function handleSavedMovies() {
     mainApi.getFilms()
       .then((res) => {
+        localStorage.setItem('savedMovies', JSON.stringify(res))
         console.log(res)
         setSavedMovies(res)
       })
@@ -186,7 +194,10 @@ function App(props) {
             isAuth={isAuth} 
             savedMovies={savedMovies}
             onHandleMovies={handleSavedMovies}
-            onHandleMovieButton={handleDeleteSavedMovie}/>
+            onHandleMovieButton={handleDeleteSavedMovie}
+            onGetFilms={findSavedMovies}
+            onFindByDuration={findByDuration}
+            onSetMovies={setSavedMovies}/>
           <ProtectedRoute
             path="/movies"
             component={Movies}

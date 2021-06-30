@@ -10,7 +10,11 @@ export const SavedMovies = (props) => {
 
 	return (
 		<>
-			<SearchForm />
+			<SearchForm 
+			onGetFilms={props.onGetFilms}
+			movies={props.savedMovies}
+			onFindByDuration={props.onFindByDuration}
+			onSetMovies={props.onSetMovies}/>
 			<div className="card-list">
 				<MoviesCardList
 					movies={props.savedMovies}
