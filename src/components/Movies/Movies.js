@@ -6,16 +6,19 @@ export const Movies = (props) => {
 	return (
 		<>
 			<SearchForm
-				onGetFilms={props.onGetFilms} 
+				onGetFilms={props.onGetFilms}
 				onFindByDuration={props.onFindByDuration}
 				movies={props.movies}
-				onSetMovies={props.onSetMovies}/>
+				onSetMovies={props.onSetMovies} />
 			<MoviesCardList
-			movies={props.movies} 
-			onHandleMovieButton={props.onHandleMovieButton}
-			savedMovies={props.savedMovies}
-			component='movies'
-			onSetMovies={props.onSetMovies}/>
+				movies={props.movies}
+				onHandleMovieButton={props.onHandleMovieButton}
+				savedMovies={props.savedMovies}
+				component='movies'
+				onSetMovies={props.onSetMovies}
+				isLoading={props.isLoading}
+				onLoadedFilms={props.onLoadedFilms}
+				loadedFilms={props.loadedFilms} />
 		</>
 	);
 }

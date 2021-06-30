@@ -7,7 +7,7 @@ import { Profile } from "../Profile/Profile";
 import { Register } from "../Register/Register";
 import { Login } from "../Login/Login";
 import { Error404 } from "../Error404/Error404";
-import InfoToolTip  from '../InfoToolTip/InfoToolTip';
+import InfoToolTip from '../InfoToolTip/InfoToolTip';
 import React from "react";
 import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.css';
@@ -27,11 +27,13 @@ function App(props) {
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [isOpenSuccess, setIsOpenSuccess] = React.useState(false);
   const [isOpenFail, setIsOpenFail] = React.useState(false);
+  const [isPreloader, setIsPreloader] = React.useState(false);
+  const [loadedFilms, setLoadedFilms] = React.useState(0);
 
-function modalClose(){
-  setIsOpenSuccess(false)
-  setIsOpenFail(false)
-}
+  function modalClose() {
+    setIsOpenSuccess(false)
+    setIsOpenFail(false)
+  }
 
   function handleLink(boolean) {
     setIsAuth(boolean);
@@ -106,10 +108,12 @@ function modalClose(){
   }
 
   function getFilms(keyValue) {
+    setIsPreloader(true)
     moviesApi.getFilms()
       .then((res) => {
         localStorage.setItem('movies', JSON.stringify(res));
         setMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('movies'))))
+        setIsPreloader(false)
       })
       .catch((err) => {
         console.log(err);
@@ -117,8 +121,9 @@ function modalClose(){
   }
 
   function findFilms(keyValue) {
+    setLoadedFilms(0);
     handleSavedMovies()
-    if(!localStorage.getItem('movies')) {
+    if (!localStorage.getItem('movies')) {
       getFilms(keyValue);
     } else {
       setMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('movies'))))
@@ -127,7 +132,7 @@ function modalClose(){
 
   function updateToSaveMovies(id) {
     const films = JSON.parse(localStorage.getItem('savedMovies'));
-    localStorage.setItem('savedMovies', JSON.stringify(films.filter((film)=>{return film.movieId !== id })))
+    localStorage.setItem('savedMovies', JSON.stringify(films.filter((film) => { return film.movieId !== id })))
   }
 
   function findSavedMovies(keyValue) {
@@ -139,11 +144,13 @@ function modalClose(){
   }
 
   function handleSavedMovies() {
+    setIsPreloader(true)
     mainApi.getFilms()
       .then((res) => {
         localStorage.setItem('savedMovies', JSON.stringify(res))
         console.log(res)
         setSavedMovies(res)
+        setIsPreloader(false)
       })
       .catch((err) => {
         console.log(err);
@@ -213,7 +220,8 @@ function modalClose(){
             onHandleMovieButton={handleDeleteSavedMovie}
             onGetFilms={findSavedMovies}
             onFindByDuration={findByDuration}
-            onSetMovies={setSavedMovies} />
+            onSetMovies={setSavedMovies}
+            isLoading={isPreloader} />
           <ProtectedRoute
             path="/movies"
             component={Movies}
@@ -223,7 +231,10 @@ function modalClose(){
             onSetMovies={setMovies}
             onHandleMovieButton={handlesavedMovie}
             savedMovies={savedMovies}
-            onFindByDuration={findByDuration} />
+            onFindByDuration={findByDuration}
+            isLoading={isPreloader} 
+            onLoadedFilms={setLoadedFilms}
+            loadedFilms={loadedFilms}/>
           <ProtectedRoute
             path="/profile"
             component={Profile}
@@ -248,13 +259,13 @@ function modalClose(){
         {isHidden && isHiddenFooter && <Footer />}
       </CurrentUserContext.Provider>
       <InfoToolTip
-      title="Редактирование профиля прошло успешно"
-      isOpen={isOpenSuccess}
-      onClose={modalClose}/>
+        title="Редактирование профиля прошло успешно"
+        isOpen={isOpenSuccess}
+        onClose={modalClose} />
       <InfoToolTip
-      title="Произошла ошибка"
-      isOpen={isOpenFail}
-      onClose={modalClose}/>
+        title="Произошла ошибка"
+        isOpen={isOpenFail}
+        onClose={modalClose} />
     </div>
   );
 }

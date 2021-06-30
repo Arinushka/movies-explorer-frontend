@@ -1,7 +1,6 @@
 import React from 'react';
 import { SearchForm } from '../SearchForm/SearchForm';
 import { MoviesCardList } from '../MoviesCardList/MoviesCardList';
-
 export const SavedMovies = (props) => {
 
 	React.useEffect(() => {
@@ -19,7 +18,8 @@ export const SavedMovies = (props) => {
 				<MoviesCardList
 					movies={props.savedMovies}
 					component='savedMovies'
-					onHandleMovieButton={props.onHandleMovieButton} />
+					onHandleMovieButton={props.onHandleMovieButton}
+					isLoading={props.isLoading} />
 			</div>
 		</>
 	);
