@@ -19,7 +19,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function App(props) {
 
   const [isAuth, setIsAuth] = React.useState(false);
-  const [isSavedMovies, setIsSavedMovies] = React.useState(true);
+
   const [isHidden, setIsHidden] = React.useState(true);
   const [isHiddenFooter, setIsHiddenFooter] = React.useState(true);
   const [currentUser, setCurrentUser] = React.useState({ name: "", email: "", id: "" });
@@ -124,6 +124,16 @@ function App(props) {
       });
   }
 
+  function handleDeleteSavedMovie(movie) {
+    mainApi.movieDelete(movie.movieId)
+      .then(() => {
+        setSavedMovies((movies) => movies.filter((film) => film.movieId !== movie.movieId))
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   function handlesavedMovie(movie) {
       const id = movie.id || movie.movieId;
       console.log(movie)
@@ -136,7 +146,6 @@ function App(props) {
             films.map((film) => (
               film.id === movie.movieId ? newMovie : film))
           );
-  
         })
         .catch((err) => {
           console.log(err);
@@ -171,11 +180,13 @@ function App(props) {
           <ProtectedRoute
             path="/saved-movies"
             component={SavedMovies}
-            isAuth={isAuth} />
+            isAuth={isAuth} 
+            savedMovies={savedMovies}
+            onHandleMovies={handleSavedMovies}
+            onHandleMovieButton={handleDeleteSavedMovie}/>
           <ProtectedRoute
             path="/movies"
             component={Movies}
-            isSavedMovies={isSavedMovies}
             isAuth={isAuth}
             onGetFilms={findFilms}
             movies={movies}

@@ -3,6 +3,8 @@ import { MoviesCard } from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
 export const MoviesCardList = (props) => {
+
+	console.log(props.movies)
 	return (
 		<section className="card-list">
 			<div className="card-list__wrapper">
@@ -11,7 +13,8 @@ export const MoviesCardList = (props) => {
 						key={movie.id}
 						movie={movie}
 						onHandleMovieButton={props.onHandleMovieButton}
-						savedMovies={props.savedMovies} />
+						savedMovies={props.savedMovies} 
+						component={props.component}/>
 				))}
 				{console.log(props.movies)}
 			</div>

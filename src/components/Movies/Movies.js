@@ -12,7 +12,8 @@ export const Movies = (props) => {
 			<MoviesCardList
 			movies={props.movies} 
 			onHandleMovieButton={props.onHandleMovieButton}
-			savedMovies={props.savedMovies}/>
+			savedMovies={props.savedMovies}
+			component='movies'/>
 		</>
 	);
 }
