@@ -7,29 +7,35 @@ import { Profile } from "../Profile/Profile";
 import { Register } from "../Register/Register";
 import { Login } from "../Login/Login";
 import { Error404 } from "../Error404/Error404";
+import InfoToolTip  from '../InfoToolTip/InfoToolTip';
 import React from "react";
 import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.css';
 import * as mainApi from "../../utils/MainApi.js";
 import * as moviesApi from "../../utils/MoviesApi.js";
 import * as search from "../../utils/search.js";
-import { ProtectedRoute } from "../ProtectedRoute";
+import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App(props) {
 
   const [isAuth, setIsAuth] = React.useState(false);
-
   const [isHidden, setIsHidden] = React.useState(true);
   const [isHiddenFooter, setIsHiddenFooter] = React.useState(true);
   const [currentUser, setCurrentUser] = React.useState({ name: "", email: "", id: "" });
   const [movies, setMovies] = React.useState([]);
   const [savedMovies, setSavedMovies] = React.useState([]);
+  const [isOpenSuccess, setIsOpenSuccess] = React.useState(false);
+  const [isOpenFail, setIsOpenFail] = React.useState(false);
+
+function modalClose(){
+  setIsOpenSuccess(false)
+  setIsOpenFail(false)
+}
 
   function handleLink(boolean) {
     setIsAuth(boolean);
   }
-
 
   function handleRegister(name, email, password) {
     mainApi.register(name, email, password)
@@ -37,6 +43,7 @@ function App(props) {
         props.history.push('/signin');
       })
       .catch((err) => {
+        setIsOpenFail(true)
         console.log(err)
       }
       );
@@ -50,6 +57,7 @@ function App(props) {
         localStorage.setItem('auth', true);
       })
       .catch((err) => {
+        setIsOpenFail(true)
         console.log(err)
       }
       );
@@ -89,38 +97,45 @@ function App(props) {
     mainApi.setUserInfo(data.name, data.email)
       .then((res) => {
         setCurrentUser(res.data);
+        setIsOpenSuccess(true);
+      })
+      .catch((err) => {
+        setIsOpenFail(true)
+        console.log(err);
+      });
+  }
+
+  function getFilms(keyValue) {
+    moviesApi.getFilms()
+      .then((res) => {
+        localStorage.setItem('movies', JSON.stringify(res));
+        setMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('movies'))))
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  function getFilms() {
-    if (!localStorage.getItem('movies')) {
-      moviesApi.getFilms()
-        .then((res) => {
-          localStorage.setItem('movies', JSON.stringify(res));
-          console.log(res)
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  function findFilms(keyValue) {
+    handleSavedMovies()
+    if(!localStorage.getItem('movies')) {
+      getFilms(keyValue);
+    } else {
+      setMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('movies'))))
     }
   }
 
-  function findFilms(keyValue) {
-    handleSavedMovies()
-    getFilms();
-    console.log(JSON.parse(localStorage.getItem('movies')))
-    setMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('movies'))))
+  function updateToSaveMovies(id) {
+    const films = JSON.parse(localStorage.getItem('savedMovies'));
+    localStorage.setItem('savedMovies', JSON.stringify(films.filter((film)=>{return film.movieId !== id })))
   }
 
-  function findSavedMovies(keyValue){
-setSavedMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('savedMovies'))))
+  function findSavedMovies(keyValue) {
+    setSavedMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('savedMovies'))))
   }
 
-  function findByDuration(setFilms, films){
-     setFilms(search.searchMoviesByDuration(films))
+  function findByDuration(setFilms, films) {
+    setFilms(search.searchMoviesByDuration(films))
   }
 
   function handleSavedMovies() {
@@ -139,6 +154,7 @@ setSavedMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('sa
     mainApi.movieDelete(movie.movieId)
       .then(() => {
         setSavedMovies((movies) => movies.filter((film) => film.movieId !== movie.movieId))
+        updateToSaveMovies(movie.movieId)
       })
       .catch((err) => {
         console.log(err);
@@ -146,22 +162,22 @@ setSavedMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('sa
   }
 
   function handlesavedMovie(movie) {
-      const id = movie.id || movie.movieId;
-      console.log(movie)
-      const isLiked = savedMovies.some(item => item.movieId === id && item.owner === currentUser.id);
-      console.log(isLiked)
-      mainApi.changeSaveMovieStatus(movie, isLiked)
-        .then((newMovie) => {
-          handleSavedMovies()
-          setMovies((films) =>
-            films.map((film) => (
-              film.id === movie.movieId ? newMovie : film))
-          );
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    const id = movie.id || movie.movieId;
+    console.log(movie)
+    const isLiked = savedMovies.some(item => item.movieId === id && item.owner === currentUser.id);
+    console.log(isLiked)
+    mainApi.changeSaveMovieStatus(movie, isLiked)
+      .then((newMovie) => {
+        handleSavedMovies()
+        setMovies((films) =>
+          films.map((film) => (
+            film.id === movie.movieId ? newMovie : film))
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   React.useEffect(() => {
     handleTokenCheck();
@@ -191,13 +207,13 @@ setSavedMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('sa
           <ProtectedRoute
             path="/saved-movies"
             component={SavedMovies}
-            isAuth={isAuth} 
+            isAuth={isAuth}
             savedMovies={savedMovies}
             onHandleMovies={handleSavedMovies}
             onHandleMovieButton={handleDeleteSavedMovie}
             onGetFilms={findSavedMovies}
             onFindByDuration={findByDuration}
-            onSetMovies={setSavedMovies}/>
+            onSetMovies={setSavedMovies} />
           <ProtectedRoute
             path="/movies"
             component={Movies}
@@ -231,6 +247,14 @@ setSavedMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('sa
         </Switch>
         {isHidden && isHiddenFooter && <Footer />}
       </CurrentUserContext.Provider>
+      <InfoToolTip
+      title="Редактирование профиля прошло успешно"
+      isOpen={isOpenSuccess}
+      onClose={modalClose}/>
+      <InfoToolTip
+      title="Произошла ошибка"
+      isOpen={isOpenFail}
+      onClose={modalClose}/>
     </div>
   );
 }

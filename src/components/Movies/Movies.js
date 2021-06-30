@@ -14,7 +14,8 @@ export const Movies = (props) => {
 			movies={props.movies} 
 			onHandleMovieButton={props.onHandleMovieButton}
 			savedMovies={props.savedMovies}
-			component='movies'/>
+			component='movies'
+			onSetMovies={props.onSetMovies}/>
 		</>
 	);
 }

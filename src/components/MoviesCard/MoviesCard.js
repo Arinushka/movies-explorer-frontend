@@ -3,6 +3,7 @@ import './MoviesCard.css';
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 
+
 export const MoviesCard = (props) => {
 
 	const { nameRU, image, duration } = props.movie;

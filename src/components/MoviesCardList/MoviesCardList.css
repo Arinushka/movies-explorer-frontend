@@ -62,6 +62,10 @@
   line-height: 15px;
 }
 
+.card-list__button_hidden {
+  visibility: hidden;
+}
+
 .card-list__button:hover {
 	opacity: 0.6;
 	transition-duration: 1s;
