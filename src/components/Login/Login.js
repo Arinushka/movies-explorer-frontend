@@ -35,6 +35,7 @@ export const Login = (props) => {
 					onChange={handleEmail}
 					value={email}
 					className="form__input"
+          classNameError="form__input_error"
 					type="email"
 					minLength="2"
 					maxLength="30" />
@@ -45,6 +46,7 @@ export const Login = (props) => {
 					onChange={handlePassword}
 					value={password}
 					className="form__input"
+          classNameError="form__input_error"
 					type="password"
 					minLength="4"
 					maxLength="16" />

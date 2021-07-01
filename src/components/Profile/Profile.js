@@ -5,10 +5,13 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 export const Profile = (props) => {
 
+  const formRef = React.useRef();
 	const currentUser = React.useContext(CurrentUserContext);
 
 	const [name, setName] = React.useState('');
 	const [email, setEmail] = React.useState('');
+  const [isButtonDisabled, setIsButtonDisabled] = React.useState(false)
+  const buttonClassName = `profile__button ${isButtonDisabled && "profile__button_disabled"}`
 
 	function handleName(e) {
 		setName(e.target.value);
@@ -26,6 +29,15 @@ export const Profile = (props) => {
 		});
 	}
 
+  React.useEffect(() => {
+    if(formRef.current && formRef.current.checkValidity()
+      && name !== currentUser.name && email !== currentUser.email) {
+      setIsButtonDisabled(false);
+    }else{
+      setIsButtonDisabled(true);
+    }
+  })
+
 	React.useEffect(() => {
 		props.onIsHiddenFooter(false)
 		return () => {
@@ -36,30 +48,39 @@ export const Profile = (props) => {
 	return (
 		<div className="profile">
 			<h1 className="profile__title">Привет, {currentUser.name}!</h1>
-			<form className="profile__form" onSubmit={handleSubmit}>
+			<form ref={formRef} className="profile__form" onSubmit={handleSubmit}>
 				<div className="profile__wrapper">
 					<Input
 						className="profile__input"
+            classNameError="profile__input_error"
 						type="text"
 						minLength="2"
 						maxLength="30"
 						placeholder={currentUser.name}
 						value={name}
-						onChange={handleName} />
+						onChange={handleName}
+          />
 					<label className="profile__label">Имя</label>
 				</div>
 				<div className="profile__wrapper">
 					<Input
-						className="profile__input"
+						className="profile__input profile__input_email"
+            classNameError="profile__input_error"
 						type="email"
 						minLength="2"
 						maxLength="30"
 						placeholder={currentUser.email}
 						value={email}
-						onChange={handleEmail} />
+						onChange={handleEmail}
+          />
 					<label className="profile__label">Email</label>
 				</div>
-				<button className="profile__button" type="submit">Редактировать</button>
+				<button
+          className={buttonClassName}
+          type="submit"
+          disabled={isButtonDisabled}
+        >Редактировать
+				</button>
 			</form>
 			<button className="profile__link" onClick={props.onSignOut}>Выйти из аккаунта</button>
 		</div>
