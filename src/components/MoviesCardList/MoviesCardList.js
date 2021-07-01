@@ -70,7 +70,7 @@ export const MoviesCardList = (props) => {
 			<div className="card-list__wrapper">
 				{props.movies.slice(0, count).map((movie) => (
 					<MoviesCard
-						key={movie.id}
+						key={movie.id || movie.movieId}
 						movie={movie}
 						onHandleMovieButton={props.onHandleMovieButton}
 						savedMovies={props.savedMovies}

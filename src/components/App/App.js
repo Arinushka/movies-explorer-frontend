@@ -139,7 +139,6 @@ function App(props) {
     handleSavedMovies()
     if (!localStorage.getItem('movies')) {
       getFilms(keyValue);
-      handleNotFoundMovies(movies)
     } else {
       setMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('movies'))))
       handleNotFoundMovies(movies)
@@ -168,6 +167,7 @@ function App(props) {
         localStorage.setItem('savedMovies', JSON.stringify(res))
         console.log(res)
         setSavedMovies(res)
+        handleNotFoundMovies(savedMovies)
         setIsPreloader(false)
         setIsServerMoviesError(false)
       })
@@ -246,6 +246,7 @@ function App(props) {
             isServerMoviesError={isServerMoviesError}
             onComponentSavedMOvies={setIsComponentSavedMovies}
             onLoadedFilms={setLoadedFilms}
+            onIsNotFoundMovies={setIsNotFoundMovies}
           />
           <ProtectedRoute
             path="/movies"

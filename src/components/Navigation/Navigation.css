@@ -50,6 +50,10 @@
 	font-weight: 400;
 }
 
+.navigation__link_account {
+  border-bottom: 1px solid #fff;
+}
+
 .navigation__link:last-of-type {
 	margin-right: 0;
 }
