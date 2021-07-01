@@ -9,7 +9,7 @@ import { Login } from "../Login/Login";
 import { Error404 } from "../Error404/Error404";
 import InfoToolTip from '../InfoToolTip/InfoToolTip';
 import React from "react";
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, useLocation } from 'react-router-dom';
 import './App.css';
 import * as mainApi from "../../utils/MainApi.js";
 import * as moviesApi from "../../utils/MoviesApi.js";
@@ -32,7 +32,7 @@ function App(props) {
   const [isNotFoundMovies, setIsNotFoundMovies] = React.useState(true)
   const [isServerMoviesError, setIsServerMoviesError] = React.useState(false)
   const [isComponentSavedMovies, setIsComponentSavedMovies] = React.useState(false)
-
+  const location = useLocation()
   function modalClose() {
     setIsOpenSuccess(false)
     setIsOpenFail(false)
@@ -73,8 +73,8 @@ function App(props) {
       mainApi.checkToken()
         .then((res) => {
           if (res) {
-            setIsAuth(true);
-            props.history.push("/movies");
+           setIsAuth(true);
+           props.history.push(location.pathname.toString())
           }
         })
         .catch((err) => {
