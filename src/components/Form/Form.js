@@ -6,7 +6,7 @@ export const Form = (props) => {
 
   const formRef = React.useRef()
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(true)
-  const buttonClassName = `form__button ${isButtonDisabled && "form__button_disable"}`
+  const buttonClassName = `form__button ${(isButtonDisabled || props.isFormDisabled) && "form__button_disable"}`
 
   function handleSubmit(e) {
     props.onSubmit(e);

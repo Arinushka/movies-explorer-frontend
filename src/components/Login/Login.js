@@ -29,7 +29,8 @@ export const Login = (props) => {
 			to="/signup"
 			typeButton="Войти"
 			check="Еще не зарегистрированы?"
-			onIsHidden={props.onIsHidden}>
+			onIsHidden={props.onIsHidden}
+      isFormDisabled={props.isFormDisabled}>
 			<div className="form__wrapper">
 				<Input
 					onChange={handleEmail}
@@ -38,7 +39,9 @@ export const Login = (props) => {
           classNameError="form__input_error"
 					type="email"
 					minLength="2"
-					maxLength="30" />
+					maxLength="30"
+          isFormDisabled={props.isFormDisabled}
+        />
 				<label className="form__label">Email</label>
 			</div>
 			<div className="form__wrapper form__wrapper_for_login">
@@ -49,7 +52,9 @@ export const Login = (props) => {
           classNameError="form__input_error"
 					type="password"
 					minLength="4"
-					maxLength="16" />
+					maxLength="16"
+          isFormDisabled={props.isFormDisabled}
+        />
 				<label className="form__label">Пароль</label>
 			</div>
 		</Form>

@@ -12,7 +12,6 @@ export const MoviesCardList = (props) => {
 	const [count, setCount] = React.useState(0);
 	const buttonClassName = `card-list__button ${count >= props.movies.length && "card-list__button_hidden"}`
   const isNotFound = props.isNotFoundMovies && props.movies.length === 0;
-	console.log(props.movies.length, props.isNotFoundMovies)
   const isServerMoviesError = props.isServerMoviesError && props.movies.length === 0;
 
 	function handleMoviesCount(width) {

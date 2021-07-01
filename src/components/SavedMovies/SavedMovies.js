@@ -7,7 +7,6 @@ export const SavedMovies = (props) => {
 		props.onHandleMovies()
 		props.onComponentSavedMovies(true)
 		props.onIsNotFoundMovies(true)
-		console.log('перерендер')
 		return () => {
 			props.onComponentSavedMovies(false)
 		}

@@ -35,7 +35,7 @@ export const MoviesCard = (props) => {
 
 	return (
 		<article className="movies-card">
-      <a href={trailer} target="_blank">
+      <a href={trailer} target="_blank" rel="noreferrer">
         <img className="movies-card__image" alt="Картинка к фильму" src={returnLink()} />
       </a>
 			<div className="movies-card__wrapper">

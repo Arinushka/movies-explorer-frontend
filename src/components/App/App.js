@@ -32,6 +32,7 @@ function App(props) {
   const [isNotFoundMovies, setIsNotFoundMovies] = React.useState(true)
   const [isServerMoviesError, setIsServerMoviesError] = React.useState(false)
   const [isComponentSavedMovies, setIsComponentSavedMovies] = React.useState(false)
+  const [isFormDisabled, setIsFormDisabled] = React.useState(false)
   const location = useLocation()
   function modalClose() {
     setIsOpenSuccess(false)
@@ -43,26 +44,32 @@ function App(props) {
   }
 
   function handleRegister(name, email, password) {
+    setIsFormDisabled(true)
     mainApi.register(name, email, password)
       .then((res) => {
         props.history.push('/signin');
+        setIsFormDisabled(false)
       })
       .catch((err) => {
         setIsOpenFail(true)
+          setIsFormDisabled(false)
         console.log(err)
       }
       );
   }
 
   function handleLogin(email, password) {
+    setIsFormDisabled(true)
     mainApi.authorize(email, password)
       .then((res) => {
         setIsAuth(true)
         props.history.push('/movies');
         localStorage.setItem('auth', true);
+        setIsFormDisabled(false)
       })
       .catch((err) => {
         setIsOpenFail(true)
+          setIsFormDisabled(false)
         console.log(err)
       }
       );
@@ -88,6 +95,8 @@ function App(props) {
       .then((res) => {
         props.history.push('/signin');
         setIsAuth(false);
+        setMovies([])
+        setSavedMovies([])
         localStorage.removeItem('auth');
         localStorage.removeItem('movies');
         localStorage.removeItem('savedMovies');
@@ -99,19 +108,23 @@ function App(props) {
   }
 
   function handleUpdateUser(data) {
+    setIsFormDisabled(true)
     mainApi.setUserInfo(data.name, data.email)
       .then((res) => {
         setCurrentUser(res.data);
         setIsOpenSuccess(true);
+        setIsFormDisabled(false)
       })
       .catch((err) => {
         setIsOpenFail(true)
+        setIsFormDisabled(false)
         console.log(err);
       });
   }
 
   function getFilms(keyValue) {
     setIsPreloader(true)
+    setIsNotFoundMovies(false)
     moviesApi.getFilms()
       .then((res) => {
         localStorage.setItem('movies', JSON.stringify(res));
@@ -128,7 +141,6 @@ function App(props) {
   }
 
   function handleNotFoundMovies(films) {
-    console.log(films)
     if (films.length === 0) {
       setIsNotFoundMovies(true)
     }
@@ -136,7 +148,14 @@ function App(props) {
 
   function findFilms(keyValue) {
     setLoadedFilms(0);
-    handleSavedMovies()
+    setIsNotFoundMovies(true)
+    mainApi.getFilms()
+      .then((res) => {
+        setSavedMovies(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      });
     if (!localStorage.getItem('movies')) {
       getFilms(keyValue);
     } else {
@@ -161,11 +180,11 @@ function App(props) {
   }
 
   function handleSavedMovies() {
+    setIsNotFoundMovies(false)
     if (isComponentSavedMovies) setIsPreloader(true)
     mainApi.getFilms()
       .then((res) => {
         localStorage.setItem('savedMovies', JSON.stringify(res))
-        console.log(res)
         setSavedMovies(res)
         handleNotFoundMovies(savedMovies)
         setIsPreloader(false)
@@ -191,9 +210,7 @@ function App(props) {
 
   function handlesavedMovie(movie) {
     const id = movie.id || movie.movieId;
-    console.log(movie)
     const isLiked = savedMovies.some(item => item.movieId === id && item.owner === currentUser.id);
-    console.log(isLiked)
     mainApi.changeSaveMovieStatus(movie, isLiked)
       .then((newMovie) => {
         handleSavedMovies()
@@ -209,6 +226,9 @@ function App(props) {
 
   React.useEffect(() => {
     handleTokenCheck();
+    if(localStorage.getItem('movies')){
+      setMovies(JSON.parse(localStorage.getItem('movies')))
+    }
   }, []);
 
   React.useEffect(() => {
@@ -271,16 +291,22 @@ function App(props) {
             onIsHiddenFooter={setIsHiddenFooter}
             isAuth={isAuth}
             onSignOut={handleSignOut}
-            onUpdateUser={handleUpdateUser} />
+            onUpdateUser={handleUpdateUser}
+            isFormDisabled={isFormDisabled}
+          />
           <Route path="/signup">
             <Register
               onIsHidden={setIsHidden}
-              onRegister={handleRegister} />
+              onRegister={handleRegister}
+              isFormDisabled={isFormDisabled}
+            />
           </Route>
           <Route path="/signin">
             <Login
               onIsHidden={setIsHidden}
-              onLogin={handleLogin} />
+              onLogin={handleLogin}
+              isFormDisabled={isFormDisabled}
+            />
           </Route>
           <Route path="*">
             <Error404 onIsHidden={setIsHidden} />

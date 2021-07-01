@@ -11,7 +11,7 @@ export const Profile = (props) => {
 	const [name, setName] = React.useState('');
 	const [email, setEmail] = React.useState('');
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false)
-  const buttonClassName = `profile__button ${isButtonDisabled && "profile__button_disabled"}`
+  const buttonClassName = `profile__button ${(isButtonDisabled || props.isFormDisabled) && "profile__button_disabled"}`
 
 	function handleName(e) {
 		setName(e.target.value);
@@ -59,6 +59,7 @@ export const Profile = (props) => {
 						placeholder={currentUser.name}
 						value={name}
 						onChange={handleName}
+            isFormDisabled={props.isFormDisabled}
           />
 					<label className="profile__label">Имя</label>
 				</div>
@@ -72,6 +73,7 @@ export const Profile = (props) => {
 						placeholder={currentUser.email}
 						value={email}
 						onChange={handleEmail}
+            isFormDisabled={props.isFormDisabled}
           />
 					<label className="profile__label">Email</label>
 				</div>

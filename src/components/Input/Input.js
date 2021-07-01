@@ -5,7 +5,6 @@ export const Input = (props) => {
   const [errorMessage, setErrorMessage] = React.useState('');
   const [isError, setIsError] = React.useState(false);
   const className = `${props.className} ${isError && props.classNameError}`
-  const checkData = props.onCheckData || {}
 
   function handleChange(e) {
     props.onChange(e);
@@ -32,7 +31,8 @@ export const Input = (props) => {
         type={props.type}
         minLength={props.minLength}
         maxLength={props.maxLength}
-        required/>
+        required
+        disabled={props.isFormDisabled}/>
 			<span className="input__error">{errorMessage}</span>
 		</div>
 	);
