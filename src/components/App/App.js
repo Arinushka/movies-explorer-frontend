@@ -29,6 +29,9 @@ function App(props) {
   const [isOpenFail, setIsOpenFail] = React.useState(false);
   const [isPreloader, setIsPreloader] = React.useState(false);
   const [loadedFilms, setLoadedFilms] = React.useState(0);
+  const [isNotFoundMovies, setIsNotFoundMovies] = React.useState(true)
+  const [isServerMoviesError, setIsServerMoviesError] = React.useState(false)
+  const [isComponentSavedMovies, setIsComponentSavedMovies] = React.useState(false)
 
   function modalClose() {
     setIsOpenSuccess(false)
@@ -85,7 +88,7 @@ function App(props) {
       .then((res) => {
         props.history.push('/signin');
         setIsAuth(false);
-        localStorage.removeItem('auth', 'movies', 'savedMovies');
+        localStorage.removeItem('auth');
         localStorage.removeItem('movies');
         localStorage.removeItem('savedMovies');
       })
@@ -113,11 +116,22 @@ function App(props) {
       .then((res) => {
         localStorage.setItem('movies', JSON.stringify(res));
         setMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('movies'))))
+        handleNotFoundMovies(movies)
         setIsPreloader(false)
+        setIsServerMoviesError(false)
       })
       .catch((err) => {
         console.log(err);
+        setIsServerMoviesError(true)
+        setIsNotFoundMovies(false)
       });
+  }
+
+  function handleNotFoundMovies(films) {
+    console.log(films)
+    if (films.length === 0) {
+      setIsNotFoundMovies(true)
+    }
   }
 
   function findFilms(keyValue) {
@@ -125,8 +139,10 @@ function App(props) {
     handleSavedMovies()
     if (!localStorage.getItem('movies')) {
       getFilms(keyValue);
+      handleNotFoundMovies(movies)
     } else {
       setMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('movies'))))
+      handleNotFoundMovies(movies)
     }
   }
 
@@ -137,23 +153,28 @@ function App(props) {
 
   function findSavedMovies(keyValue) {
     setSavedMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('savedMovies'))))
+    handleNotFoundMovies(savedMovies)
   }
 
   function findByDuration(setFilms, films) {
     setFilms(search.searchMoviesByDuration(films))
+    handleNotFoundMovies(films)
   }
 
   function handleSavedMovies() {
-    setIsPreloader(true)
+    if (isComponentSavedMovies) setIsPreloader(true)
     mainApi.getFilms()
       .then((res) => {
         localStorage.setItem('savedMovies', JSON.stringify(res))
         console.log(res)
         setSavedMovies(res)
         setIsPreloader(false)
+        setIsServerMoviesError(false)
       })
       .catch((err) => {
         console.log(err);
+        setIsServerMoviesError(true)
+        setIsNotFoundMovies(false)
       });
   }
 
@@ -195,7 +216,6 @@ function App(props) {
       mainApi.getUserInfo()
         .then((res) => {
           setCurrentUser(res)
-          console.log(res)
         })
         .catch((err) => {
           console.log(err);
@@ -221,7 +241,12 @@ function App(props) {
             onGetFilms={findSavedMovies}
             onFindByDuration={findByDuration}
             onSetMovies={setSavedMovies}
-            isLoading={isPreloader} />
+            isLoading={isPreloader}
+            isNotFoundMovies={isNotFoundMovies}
+            isServerMoviesError={isServerMoviesError}
+            onComponentSavedMOvies={setIsComponentSavedMovies}
+            onLoadedFilms={setLoadedFilms}
+          />
           <ProtectedRoute
             path="/movies"
             component={Movies}
@@ -232,9 +257,13 @@ function App(props) {
             onHandleMovieButton={handlesavedMovie}
             savedMovies={savedMovies}
             onFindByDuration={findByDuration}
-            isLoading={isPreloader} 
+            isLoading={isPreloader}
             onLoadedFilms={setLoadedFilms}
-            loadedFilms={loadedFilms}/>
+            loadedFilms={loadedFilms}
+            isNotFoundMovies={isNotFoundMovies}
+            onIsNotFoundMovies={setIsNotFoundMovies}
+            isServerMoviesError={isServerMoviesError}
+          />
           <ProtectedRoute
             path="/profile"
             component={Profile}

@@ -3,6 +3,9 @@ import { MoviesCardList } from '../MoviesCardList/MoviesCardList';
 import { SearchForm } from '../SearchForm/SearchForm';
 
 export const Movies = (props) => {
+  React.useEffect(()=> {
+    props.onIsNotFoundMovies(false)
+  },[])
 	return (
 		<>
 			<SearchForm
@@ -18,7 +21,10 @@ export const Movies = (props) => {
 				onSetMovies={props.onSetMovies}
 				isLoading={props.isLoading}
 				onLoadedFilms={props.onLoadedFilms}
-				loadedFilms={props.loadedFilms} />
+				loadedFilms={props.loadedFilms}
+        isNotFoundMovies={props.isNotFoundMovies}
+        isServerMoviesError={props.isServerMoviesError}
+      />
 		</>
 	);
 }

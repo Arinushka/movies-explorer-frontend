@@ -5,11 +5,15 @@ export const SavedMovies = (props) => {
 
 	React.useEffect(() => {
 		props.onHandleMovies()
+		props.onComponentSavedMOvies(true)
+		return () => {
+			props.onComponentSavedMOvies(false)
+		}
 	}, [])
 
 	return (
 		<>
-			<SearchForm 
+			<SearchForm
 			onGetFilms={props.onGetFilms}
 			movies={props.savedMovies}
 			onFindByDuration={props.onFindByDuration}
@@ -19,7 +23,11 @@ export const SavedMovies = (props) => {
 					movies={props.savedMovies}
 					component='savedMovies'
 					onHandleMovieButton={props.onHandleMovieButton}
-					isLoading={props.isLoading} />
+					isLoading={props.isLoading}
+					onLoadedFilms={props.onLoadedFilms}
+					isNotFoundMovies={props.isNotFoundMovies}
+					isServerMoviesError={props.isServerMoviesError}
+				/>
 			</div>
 		</>
 	);
