@@ -111,7 +111,7 @@ function App(props) {
     setIsFormDisabled(true)
     mainApi.setUserInfo(data.name, data.email)
       .then((res) => {
-        setCurrentUser(res.data);
+        setCurrentUser(res);
         setIsOpenSuccess(true);
         setIsFormDisabled(false)
       })
@@ -227,6 +227,13 @@ function App(props) {
   React.useEffect(() => {
     handleTokenCheck();
     if(localStorage.getItem('movies')){
+      mainApi.getFilms()
+      .then((res) => {
+        setSavedMovies(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      });
       setMovies(JSON.parse(localStorage.getItem('movies')))
     }
   }, []);
