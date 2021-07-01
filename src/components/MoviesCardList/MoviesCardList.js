@@ -56,7 +56,7 @@ export const MoviesCardList = (props) => {
 	React.useEffect(() => {
 		const width = window.innerWidth;
 		handleSetCount(handleMoviesCount(width))
-	}, [])
+	}, [props.movies])
 
 	return (
 
