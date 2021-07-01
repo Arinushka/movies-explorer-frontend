@@ -30,7 +30,7 @@ export const MoviesCardList = (props) => {
 
 	function handleSetCount({ count }) {
 		setCount(count)
-		props.onLoadedFilms(count)
+		if (props.component !== 'savedMovies') props.onLoadedFilms(count)
 	}
 
 	function getWidth() {
@@ -62,7 +62,6 @@ export const MoviesCardList = (props) => {
 	}, [props.movies])
 
 	return (
-
 		<section className="card-list">
 			{props.isLoading && <Preloader />}
       {isNotFound && <p className="card-list__error-message">Ничего не найдено.</p>}

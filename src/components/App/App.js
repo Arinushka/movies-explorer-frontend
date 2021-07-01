@@ -244,7 +244,7 @@ function App(props) {
             isLoading={isPreloader}
             isNotFoundMovies={isNotFoundMovies}
             isServerMoviesError={isServerMoviesError}
-            onComponentSavedMOvies={setIsComponentSavedMovies}
+            onComponentSavedMovies={setIsComponentSavedMovies}
             onLoadedFilms={setLoadedFilms}
             onIsNotFoundMovies={setIsNotFoundMovies}
           />

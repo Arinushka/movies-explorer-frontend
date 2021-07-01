@@ -5,11 +5,11 @@ export const SavedMovies = (props) => {
 
 	React.useEffect(() => {
 		props.onHandleMovies()
-		props.onComponentSavedMOvies(true)
+		props.onComponentSavedMovies(true)
 		props.onIsNotFoundMovies(true)
 		console.log('перерендер')
 		return () => {
-			props.onComponentSavedMOvies(false)
+			props.onComponentSavedMovies(false)
 		}
 	}, [])
 

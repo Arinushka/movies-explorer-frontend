@@ -4,6 +4,7 @@ import { SearchForm } from '../SearchForm/SearchForm';
 
 export const Movies = (props) => {
   React.useEffect(()=> {
+    props.onLoadedFilms(0)
     props.onIsNotFoundMovies(false)
   },[])
 	return (
