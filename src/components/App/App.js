@@ -125,6 +125,7 @@ function App(props) {
   function getFilms(keyValue) {
     setIsPreloader(true)
     setIsNotFoundMovies(false)
+    setIsFormDisabled(true)
     moviesApi.getFilms()
       .then((res) => {
         localStorage.setItem('movies', JSON.stringify(res));
@@ -132,11 +133,13 @@ function App(props) {
         handleNotFoundMovies(movies)
         setIsPreloader(false)
         setIsServerMoviesError(false)
+        setIsFormDisabled(false)
       })
       .catch((err) => {
         console.log(err);
         setIsServerMoviesError(true)
         setIsNotFoundMovies(false)
+        setIsFormDisabled(false)
       });
   }
 
@@ -291,6 +294,7 @@ function App(props) {
             isNotFoundMovies={isNotFoundMovies}
             onIsNotFoundMovies={setIsNotFoundMovies}
             isServerMoviesError={isServerMoviesError}
+            isFormDisabled={isFormDisabled}
           />
           <ProtectedRoute
             path="/profile"
