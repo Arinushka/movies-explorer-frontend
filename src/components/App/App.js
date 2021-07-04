@@ -52,7 +52,7 @@ function App(props) {
       })
       .catch((err) => {
         setIsOpenFail(true)
-          setIsFormDisabled(false)
+        setIsFormDisabled(false)
         console.log(err)
       }
       );
@@ -69,7 +69,7 @@ function App(props) {
       })
       .catch((err) => {
         setIsOpenFail(true)
-          setIsFormDisabled(false)
+        setIsFormDisabled(false)
         console.log(err)
       }
       );
@@ -80,8 +80,8 @@ function App(props) {
       mainApi.checkToken()
         .then((res) => {
           if (res) {
-           setIsAuth(true);
-           props.history.push(location.pathname.toString())
+            setIsAuth(true);
+            props.history.push(location.pathname.toString())
           }
         })
         .catch((err) => {
@@ -100,6 +100,8 @@ function App(props) {
         localStorage.removeItem('auth');
         localStorage.removeItem('movies');
         localStorage.removeItem('savedMovies');
+        localStorage.removeItem('keyValueSavedMovies');
+        localStorage.removeItem('keyValueMovies');
       })
       .catch((err) => {
         console.log(err)
@@ -152,6 +154,7 @@ function App(props) {
   function findFilms(keyValue) {
     setLoadedFilms(0);
     setIsNotFoundMovies(true)
+    localStorage.setItem('keyValueMovies', keyValue)
     mainApi.getFilms()
       .then((res) => {
         setSavedMovies(res)
@@ -175,6 +178,7 @@ function App(props) {
   function findSavedMovies(keyValue) {
     setSavedMovies(search.searchMovies(keyValue, JSON.parse(localStorage.getItem('savedMovies'))))
     handleNotFoundMovies(savedMovies)
+    localStorage.setItem('keyValueSavedMovies', keyValue)
   }
 
   function findByDuration(setFilms, films) {
@@ -229,16 +233,6 @@ function App(props) {
 
   React.useEffect(() => {
     handleTokenCheck();
-    if(localStorage.getItem('movies')){
-      mainApi.getFilms()
-      .then((res) => {
-        setSavedMovies(res)
-      })
-      .catch((err) => {
-        console.log(err)
-      });
-      setMovies(JSON.parse(localStorage.getItem('movies')))
-    }
   }, []);
 
   React.useEffect(() => {
@@ -250,6 +244,13 @@ function App(props) {
         .catch((err) => {
           console.log(err);
         });
+      if (localStorage.getItem('keyValueMovies')) {
+        findFilms(localStorage.getItem('keyValueMovies'))
+      }
+      if (localStorage.getItem('keyValueSavedMovies')) {
+        console.log(localStorage.getItem('keyValueSavedMovies'), 'pidor')
+        findSavedMovies(localStorage.getItem('keyValueSavedMovies'))
+      }
     }
   }, [isAuth]);
 

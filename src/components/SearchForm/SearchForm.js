@@ -15,6 +15,12 @@ export const SearchForm = (props) => {
 		props.onGetFilms(keyValue)
 	}
 
+	React.useEffect(() => {
+		if (localStorage.getItem(props.keyValue)) {
+			setKeyValue(localStorage.getItem(props.keyValue))
+		} 
+	}, [])
+
 	return (
 		<section className="search-form">
 			<form className="search-form__form" onSubmit={handleSearch}>
@@ -29,7 +35,7 @@ export const SearchForm = (props) => {
 						movies={props.movies}
 						onSetMovies={props.onSetMovies}
 						keyValue={keyValue}
-						onGetFilms={props.onGetFilms}/>
+						onGetFilms={props.onGetFilms} />
 				</div>
 			</form>
 		</section>

@@ -4,7 +4,10 @@ import { MoviesCardList } from '../MoviesCardList/MoviesCardList';
 export const SavedMovies = (props) => {
 
 	React.useEffect(() => {
-		props.onHandleMovies()
+		
+		if (!localStorage.getItem('keyValueSavedMovies')) {
+			props.onHandleMovies()
+		}
 		props.onComponentSavedMovies(true)
 		props.onIsNotFoundMovies(true)
 		return () => {
@@ -15,10 +18,11 @@ export const SavedMovies = (props) => {
 	return (
 		<>
 			<SearchForm
-			onGetFilms={props.onGetFilms}
-			movies={props.savedMovies}
-			onFindByDuration={props.onFindByDuration}
-			onSetMovies={props.onSetMovies}/>
+				onGetFilms={props.onGetFilms}
+				movies={props.savedMovies}
+				onFindByDuration={props.onFindByDuration}
+				onSetMovies={props.onSetMovies}
+				keyValue="keyValueSavedMovies" />
 			<div className="card-list">
 				<MoviesCardList
 					movies={props.savedMovies}

@@ -5,4 +5,6 @@ export const MOVIES_COUNT_MIDDLE = 8;
 export const MOVIES_COUNT_LOW = 5;
 export const MOVIES_COUNT_MAX_STEP = 3;
 export const MOVIES_COUNT_MIDDLE_STEP = 2;
+export const DURATION = 40;
+
 
