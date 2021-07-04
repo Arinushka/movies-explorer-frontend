@@ -248,7 +248,7 @@ function App(props) {
         findFilms(localStorage.getItem('keyValueMovies'))
       }
       if (localStorage.getItem('keyValueSavedMovies')) {
-        console.log(localStorage.getItem('keyValueSavedMovies'), 'pidor')
+        console.log(localStorage.getItem('keyValueSavedMovies'))
         findSavedMovies(localStorage.getItem('keyValueSavedMovies'))
       }
     }
