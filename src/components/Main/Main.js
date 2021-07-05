@@ -5,14 +5,8 @@ import { Portfolio } from '../Portfolio/Portfolio';
 import { Promo } from '../Promo/Promo';
 import { Tech } from '../Tech/Tech';
 
-export const Main = (props) => {
+export const Main = () => {
 
-	React.useEffect(() => {
-		props.setAuth(false);
-		return () => {
-			props.setAuth(true)
-		}
-	}, []);
 
 	return (
 		<main >

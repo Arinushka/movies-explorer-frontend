@@ -51,7 +51,13 @@
 	background-color: transparent;
 	color: #fff;
 	outline: none;
-	padding: 0;
+  padding: 0 0 10px 0;
+  border-bottom: 2px solid #424242;
+}
+
+.form__input_error {
+  color: #ee3465;
+  border-bottom: 2px solid #ee3465;
 }
 
 .form__label{
@@ -67,10 +73,9 @@
 .form__wrapper{
 	width: 100%;
 	position: relative;
-	margin-top: 24px;
-	border-bottom: 2px solid #424242;
-	padding: 0 0 10px 0;
+	margin-top: 36px;
 }
+
 
 @media screen and (max-width: 767px) and (min-width: 300px) {
   .form__wrapper{
@@ -89,7 +94,7 @@
 }
 
 .form__wrapper_for_login{
-	margin-bottom: 221px;
+	margin-bottom: 233px;
 }
 
 @media screen and (max-width: 767px) and (min-width: 300px) {
@@ -111,6 +116,11 @@
 	line-height: 17px;
 	padding: 0;
 	cursor: pointer;
+}
+
+.form__button_disable {
+  background-color: transparent;
+  border: 2px solid #FFFFFF;
 }
 
 @media screen and (max-width: 767px) and (min-width: 300px) {

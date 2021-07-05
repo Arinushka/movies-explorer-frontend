@@ -15,8 +15,8 @@ export const AboutMe = () => {
 				<p className="about-me__text">Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
 и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С&nbsp;2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс&#8209;заказами и ушёл с постоянной работы.</p>
 				<div className="about-me__links">
-					<a className="about-me__link" target="_blank" href="https://www.codewars.com/users/Arinushka">Codewars</a>
-					<a className="about-me__link" target="_blank" href="https://github.com/Arinushka">Github</a>
+					<a className="about-me__link" rel="noreferrer" target="_blank" href="https://www.codewars.com/users/Arinushka">Codewars</a>
+					<a className="about-me__link" rel="noreferrer" target="_blank" href="https://github.com/Arinushka">Github</a>
 				</div>
 				<img className="about-me__photo" src={image} alt="Моя фотография" />
 			</div>
