@@ -34,6 +34,7 @@ function App(props) {
   const [isComponentSavedMovies, setIsComponentSavedMovies] = React.useState(false)
   const [isFormDisabled, setIsFormDisabled] = React.useState(false)
   const location = useLocation()
+
   function modalClose() {
     setIsOpenSuccess(false)
     setIsOpenFail(false)
